@@ -21,14 +21,18 @@ function markdownToDocx(text: string, isLandscape: boolean): (Paragraph | Table)
       line.trim().startsWith("|") &&
       lines[i + 1]?.trim().match(/^\|[-| :]+\|$/)
     ) {
-      const headers = line.trim().split("|").filter(Boolean).map(s => s.trim());
+      const headers = line.trim().split("|").filter((_, j, a) => j > 0 && j < a.length - 1).map(s => s.trim());
       i += 2; // skip header + separator
 
       const rows: string[][] = [];
       while (i < lines.length && lines[i].trim().startsWith("|")) {
-        rows.push(lines[i].trim().split("|").filter(Boolean).map(s =>
+        const rowCells = lines[i].trim().split("|").filter((_, j, a) => j > 0 && j < a.length - 1).map(s =>
           s.trim().replace(/<\/?[^>]+(>|$)/g, "") // strip HTML tags
-        ));
+        );
+        // Pad row to match headers length
+        while (rowCells.length < headers.length) rowCells.push("");
+        // Trim row to match headers length (if too long)
+        rows.push(rowCells.slice(0, headers.length));
         i++;
       }
 

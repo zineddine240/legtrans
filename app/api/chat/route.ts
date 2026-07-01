@@ -36,20 +36,20 @@ export async function POST(req: NextRequest) {
     }
 
     try {
-      const generativeModel = vertexAI.preview.getGenerativeModel({
+      const generativeModel = genAI.getGenerativeModel({
         model: "gemini-3.5-flash",
         systemInstruction: SYSTEM_PROMPT,
       });
 
       // Format history for Gemini
       // messages is an array of { role: "user" | "assistant", content: string }
-      const history = messages.slice(0, -1).map(msg => ({
+      const history = messages.slice(0, -1).map((msg: any) => ({
         role: msg.role === "assistant" ? "model" : "user",
         parts: [{ text: msg.content }],
       }));
 
       const lastMessage = messages[messages.length - 1].content;
-      const chat = model.startChat({ history });
+      const chat = generativeModel.startChat({ history });
 
       const result = await chat.sendMessage(lastMessage);
       const responseText = result.response.text();
