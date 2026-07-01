@@ -1,45 +1,21 @@
 import { NextRequest } from "next/server";
-import { VertexAI, HarmCategory, HarmBlockThreshold } from "@google-cloud/vertexai";
+import { GoogleGenAI } from "@google/genai";
 import { verifyBackendUser, checkAndReserveBackendUsage, rollbackBackendUsage, getPageCountFromBuffer } from "@/lib/auth-backend";
 
 export const maxDuration = 60;
 
-function getVertexAI(): VertexAI {
-  const credentialsJson = process.env.GOOGLE_CREDENTIALS;
-  const projectId = process.env.GOOGLE_CLOUD_PROJECT || process.env.GOOGLE_PROJECT_ID;
-  const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
-  const privateKey = process.env.GOOGLE_PRIVATE_KEY;
-
-  let credentialsObj: any = null;
-
-  if (credentialsJson) {
-    try {
-      credentialsObj = JSON.parse(credentialsJson);
-    } catch (e) {
-      console.warn("GOOGLE_CREDENTIALS could not be parsed as JSON, attempting manual rebuild...");
-    }
+function getAIClient(): GoogleGenAI {
+  if (process.env.GEMINI_API_KEY) {
+    return new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
   }
 
-  if (!credentialsObj && projectId && clientEmail && privateKey) {
-    credentialsObj = {
-      project_id: projectId,
-      private_key: privateKey.replace(/\\n/g, "\n"),
-      client_email: clientEmail,
-    };
-  }
+  const projectId = process.env.GOOGLE_CLOUD_PROJECT || "rational-lambda-485021-e9";
+  const location = process.env.GOOGLE_CLOUD_LOCATION || "global";
 
-  if (!credentialsObj || !credentialsObj.private_key || !credentialsObj.client_email) {
-    throw new Error("Missing Google Cloud service account credentials.");
-  }
-
-  return new VertexAI({
-    project: credentialsObj.project_id || projectId,
-    location: "us-central1",
-    googleAuthOptions: {
-      credentials: {
-        client_email: credentialsObj.client_email,
-        private_key: credentialsObj.private_key,
-      }
+  return new GoogleGenAI({
+    vertexai: {
+      project: projectId,
+      location: location,
     }
   });
 }
@@ -73,16 +49,7 @@ export async function POST(req: NextRequest) {
 
     // 4. Usage reserved in step 3.
 
-    const vertexAI = getVertexAI();
-
-    const model = vertexAI.preview.getGenerativeModel({
-      model: "gemini-1.5-pro-002",
-      safetySettings: [
-        { category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_NONE },
-        { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_NONE },
-      ],
-      generationConfig: { temperature: 0.1 },
-    });
+    const ai = getAIClient();
 
     const sourceLangText =
       sourceLanguage === "auto"
@@ -101,6 +68,7 @@ Voici tes instructions obligatoires:
 `;
 
     const request = {
+      model: "gemini-2.5-pro",
       contents: [
         {
           role: "user" as const,
@@ -115,6 +83,9 @@ Voici tes instructions obligatoires:
           ],
         },
       ],
+      config: {
+        temperature: 0.1,
+      }
     };
 
     const stream = new ReadableStream({
@@ -136,10 +107,10 @@ Voici tes instructions obligatoires:
         }, 1500);
 
         try {
-          const streamingResp = await model.generateContentStream(request);
+          const streamingResp = await ai.models.generateContentStream(request);
 
-          for await (const chunk of streamingResp.stream) {
-            const text = chunk.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
+          for await (const chunk of streamingResp) {
+            const text = chunk.text ?? "";
             if (text) {
               if (!firstChunkReceived) {
                 firstChunkReceived = true;
@@ -155,10 +126,11 @@ Voici tes instructions obligatoires:
             await rollbackBackendUsage(user.uid, 'doc', incomingPages);
           }
           controller.close();
-        } catch (err) {
+        } catch (err: any) {
           clearInterval(heartbeat);
           console.error("Erreur durant le streaming Vertex AI:", err);
           await rollbackBackendUsage(user.uid, 'doc', incomingPages);
+          // Return the actual error message in the stream if it fails so it can be debugged
           controller.error(err);
         }
       },

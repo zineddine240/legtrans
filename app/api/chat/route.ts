@@ -1,43 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
-import { VertexAI, HarmCategory, HarmBlockThreshold } from "@google-cloud/vertexai";
+import { GoogleGenAI } from "@google/genai";
 import { verifyBackendUser, checkAndReserveBackendUsage, rollbackBackendUsage } from "@/lib/auth-backend";
 
-function getVertexAI(): VertexAI {
-  const credentialsJson = process.env.GOOGLE_CREDENTIALS;
-  const projectId = process.env.GOOGLE_CLOUD_PROJECT || process.env.GOOGLE_PROJECT_ID;
-  const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
-  const privateKey = process.env.GOOGLE_PRIVATE_KEY;
-
-  let credentialsObj: any = null;
-
-  if (credentialsJson) {
-    try {
-      credentialsObj = JSON.parse(credentialsJson);
-    } catch (e) {
-      console.warn("GOOGLE_CREDENTIALS could not be parsed as JSON, attempting manual rebuild...");
-    }
+function getAIClient(): GoogleGenAI {
+  if (process.env.GEMINI_API_KEY) {
+    return new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
   }
 
-  if (!credentialsObj && projectId && clientEmail && privateKey) {
-    credentialsObj = {
-      project_id: projectId,
-      private_key: privateKey.replace(/\\n/g, "\n"),
-      client_email: clientEmail,
-    };
-  }
+  const projectId = process.env.GOOGLE_CLOUD_PROJECT || "rational-lambda-485021-e9";
+  const location = process.env.GOOGLE_CLOUD_LOCATION || "global";
 
-  if (!credentialsObj || !credentialsObj.private_key || !credentialsObj.client_email) {
-    throw new Error("Missing Google Cloud service account credentials.");
-  }
-
-  return new VertexAI({
-    project: credentialsObj.project_id || projectId,
-    location: "us-central1",
-    googleAuthOptions: {
-      credentials: {
-        client_email: credentialsObj.client_email,
-        private_key: credentialsObj.private_key,
-      }
+  return new GoogleGenAI({
+    vertexai: {
+      project: projectId,
+      location: location,
     }
   });
 }
@@ -74,16 +50,9 @@ export async function POST(req: NextRequest) {
     }
 
     try {
-      const vertexAI = getVertexAI();
-      const generativeModel = vertexAI.preview.getGenerativeModel({
-        model: "gemini-1.5-pro-002",
-        systemInstruction: {
-          role: "system",
-          parts: [{ text: SYSTEM_PROMPT }]
-        },
-      });
+      const ai = getAIClient();
 
-      // Format history for Gemini Vertex AI
+      // Format history for Gemini SDK
       // messages is an array of { role: "user" | "assistant", content: string }
       const history = messages.slice(0, -1).map((msg: any) => ({
         role: msg.role === "assistant" ? "model" : "user",
@@ -91,10 +60,17 @@ export async function POST(req: NextRequest) {
       }));
 
       const lastMessage = messages[messages.length - 1].content;
-      const chat = generativeModel.startChat({ history });
+      
+      const chat = ai.chats.create({
+        model: "gemini-2.5-pro",
+        config: {
+          systemInstruction: SYSTEM_PROMPT,
+        },
+        history: history,
+      });
 
-      const result = await chat.sendMessage(lastMessage);
-      const responseText = result.response.candidates?.[0]?.content?.parts?.[0]?.text || "";
+      const result = await chat.sendMessage({ message: lastMessage });
+      const responseText = result.text || "";
 
       if (!responseText) {
         throw new Error("Empty response from Gemini");
