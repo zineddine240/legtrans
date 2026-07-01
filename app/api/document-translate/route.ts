@@ -1,48 +1,10 @@
 import { NextRequest } from "next/server";
-import { VertexAI, HarmCategory, HarmBlockThreshold } from "@google-cloud/vertexai";
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 import { verifyBackendUser, checkAndReserveBackendUsage, rollbackBackendUsage, getPageCountFromBuffer } from "@/lib/auth-backend";
 
 export const maxDuration = 60;
 
-function getVertexAI(): VertexAI {
-  const credentialsJson = process.env.GOOGLE_CREDENTIALS;
-  const projectId = process.env.GOOGLE_CLOUD_PROJECT || process.env.GOOGLE_PROJECT_ID;
-  const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
-  const privateKey = process.env.GOOGLE_PRIVATE_KEY;
-
-  let credentialsObj: any = null;
-
-  if (credentialsJson) {
-    try {
-      credentialsObj = JSON.parse(credentialsJson);
-    } catch (e) {
-      console.warn("GOOGLE_CREDENTIALS could not be parsed as JSON, attempting manual rebuild...");
-    }
-  }
-
-  if (!credentialsObj && projectId && clientEmail && privateKey) {
-    credentialsObj = {
-      project_id: projectId,
-      private_key: privateKey.replace(/\\n/g, "\n"),
-      client_email: clientEmail,
-    };
-  }
-
-  if (!credentialsObj || !credentialsObj.private_key || !credentialsObj.client_email) {
-    throw new Error("Missing Google Cloud service account credentials.");
-  }
-
-  return new VertexAI({
-    project: credentialsObj.project_id || projectId,
-    location: "us-central1",
-    googleAuthOptions: {
-      credentials: {
-        client_email: credentialsObj.client_email,
-        private_key: credentialsObj.private_key,
-      }
-    }
-  });
-}
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
 export async function POST(req: NextRequest) {
   try {
@@ -71,12 +33,8 @@ export async function POST(req: NextRequest) {
       return new Response(check.error || "Limite dépassée", { status: 403 });
     }
 
-    // 4. Usage reserved in step 3.
-
-    const vertexAI = getVertexAI();
-
-    const model = vertexAI.preview.getGenerativeModel({
-      model: "gemini-2.0-flash-001",
+    const model = genAI.getGenerativeModel({
+      model: "gemini-2.5-pro",
       safetySettings: [
         { category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_NONE },
         { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_NONE },
@@ -100,31 +58,14 @@ Voici tes instructions obligatoires:
 6. Ne génère aucun texte d'introduction (pas de "Voici la traduction"), retourne UNIQUEMENT le document traduit en Markdown pur.
 `;
 
-    const request = {
-      contents: [
-        {
-          role: "user" as const,
-          parts: [
-            { text: prompt },
-            {
-              inlineData: {
-                data: base64Data,
-                mimeType: file.type || "application/pdf",
-              },
-            },
-          ],
-        },
-      ],
-    };
-
     const stream = new ReadableStream({
       async start(controller) {
-        // Send immediate space chunk to flush HTTP headers and prevent Vercel gateway timeout
+        // Send immediate space chunk to flush HTTP headers and prevent gateway timeout
         controller.enqueue(new TextEncoder().encode(" "));
 
         let firstChunkReceived = false;
 
-        // Send a space chunk every 1.5 seconds to keep the connection warm while Gemini processes
+        // Send a space chunk every 1.5 seconds to keep the connection warm
         const heartbeat = setInterval(() => {
           if (!firstChunkReceived) {
             try {
@@ -136,10 +77,18 @@ Voici tes instructions obligatoires:
         }, 1500);
 
         try {
-          const streamingResp = await model.generateContentStream(request);
+          const result = await model.generateContentStream([
+            { text: prompt },
+            {
+              inlineData: {
+                data: base64Data,
+                mimeType: file.type || "application/pdf",
+              },
+            },
+          ]);
 
-          for await (const chunk of streamingResp.stream) {
-            const text = chunk.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
+          for await (const chunk of result.stream) {
+            const text = chunk.text();
             if (text) {
               if (!firstChunkReceived) {
                 firstChunkReceived = true;
@@ -150,14 +99,13 @@ Voici tes instructions obligatoires:
           }
           clearInterval(heartbeat);
           if (!firstChunkReceived) {
-            // Nothing was received, rollback
-            console.warn(`[DocTranslate] Empty result from Vertex. User: ${user.uid}`);
+            console.warn(`[DocTranslate] Empty result from Gemini. User: ${user.uid}`);
             await rollbackBackendUsage(user.uid, 'doc', incomingPages);
           }
           controller.close();
         } catch (err) {
           clearInterval(heartbeat);
-          console.error("Erreur durant le streaming Vertex AI:", err);
+          console.error("Erreur durant le streaming Gemini:", err);
           await rollbackBackendUsage(user.uid, 'doc', incomingPages);
           controller.error(err);
         }
@@ -168,7 +116,7 @@ Voici tes instructions obligatoires:
       headers: { "Content-Type": "text/plain; charset=utf-8" },
     });
   } catch (error: any) {
-    console.error("Erreur Vertex AI:", error);
+    console.error("Erreur Document Translate:", error);
     return new Response(error.message || "Erreur lors de la traduction", { status: 500 });
   }
 }
