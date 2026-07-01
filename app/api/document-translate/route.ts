@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
     const vertexAI = getVertexAI();
 
     const model = vertexAI.preview.getGenerativeModel({
-      model: "gemini-3.5-flash",
+      model: "gemini-2.0-flash-001",
       safetySettings: [
         { category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_NONE },
         { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_NONE },

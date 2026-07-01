@@ -371,7 +371,15 @@ export default function DocumentTranslationPage() {
           }
         }
       }
-      setTranslatedText(outputText.trimStart());
+
+      const finalText = outputText.trimStart();
+
+      // If stream returned only heartbeat spaces and no real content, treat as error
+      if (!finalText || finalText.trim().length < 5) {
+        throw new Error("La traduction n'a retourné aucun résultat. Veuillez réessayer.");
+      }
+
+      setTranslatedText(finalText);
       setStage("done");
 
       incrementTrialUsage('doc', isAdmin);
