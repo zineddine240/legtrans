@@ -44,6 +44,40 @@ function getVertexAI(): VertexAI {
   });
 }
 
+// 🟢 TEMPORARY TEST ENDPOINT TO DEBUG GOOGLE CLOUD CREDENTIALS
+export async function GET(req: NextRequest) {
+  try {
+    const vertexAI = getVertexAI();
+    return new Response(`
+      <html>
+        <body style="font-family: sans-serif; padding: 2rem;">
+          <h2 style="color: green;">✅ Vertex AI Credentials Found!</h2>
+          <p>Google Cloud Project: <strong>${vertexAI.project}</strong></p>
+          <p>Location: <strong>${vertexAI.location}</strong></p>
+          <p>However, if translations are still failing, the issue might be that the model 'gemini-1.5-pro-002' is not enabled or available in us-central1 for your account.</p>
+        </body>
+      </html>
+    `, { headers: { 'Content-Type': 'text/html' } });
+  } catch (error: any) {
+    return new Response(`
+      <html>
+        <body style="font-family: sans-serif; padding: 2rem;">
+          <h2 style="color: red;">❌ Vertex AI Setup Failed</h2>
+          <p><strong>Error Message:</strong> ${error.message}</p>
+          <hr/>
+          <h3>How to fix in Vercel:</h3>
+          <p>Ensure these Environment Variables are correctly set in your Vercel project settings:</p>
+          <ul>
+            <li><code>GOOGLE_PROJECT_ID</code> (or GOOGLE_CLOUD_PROJECT)</li>
+            <li><code>GOOGLE_CLIENT_EMAIL</code></li>
+            <li><code>GOOGLE_PRIVATE_KEY</code> (Make sure to include the -----BEGIN PRIVATE KEY----- and -----END PRIVATE KEY----- lines)</li>
+          </ul>
+        </body>
+      </html>
+    `, { headers: { 'Content-Type': 'text/html' }, status: 500 });
+  }
+}
+
 export async function POST(req: NextRequest) {
   try {
     const { text, sourceLanguage = "fr", targetLanguage = "ar" } = await req.json();
