@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ─── Professional Legal Fonts ─────────────────────────────── */
+.font-brand-serif {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+}
+
+.font-brand-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+/* ─── Brand Design Tokens ─────────────────────────────────── */
+:root {
+  /* Brand */
+  --color-primary: #0d6e4e;
+  --color-primary-dark: #074a35;
+  --color-primary-light: #1a8f6a;
+  --color-accent: #b08d3c;
+  --color-accent-light: #d4ab50;
+  --color-accent-dark: #8a6e2e;
+
+  /* Backgrounds */
+  --color-bg: #faf8f3;
+  --color-background: #faf8f3;
+  --color-surface: #ffffff;
+  --color-surface-2: #f5f3ed;
+  --color-secondary: #f5f3ed;
+
+  /* Text */
+  --color-text: #1a1a1a;
+  --color-foreground: #1a1a1a;
+  --color-text-secondary: #595959;
+  --color-muted-foreground: #595959;
+  --color-text-muted: #8a8a8a;
+  --color-muted: #8a8a8a;
+
+  /* Borders */
+  --color-border: #e5e3dc;
+  --color-border-strong: #d4d4d4;
+  --color-input: #e5e3dc;
+  --color-ring: #0d6e4e;
+
+  /* Functional */
+  --color-success: #15803d;
+  --color-warning: #c2410c;
+  --color-error: #b91c1c;
+  --color-info: #1e40af;
+
+  /* Component */
+  --color-primary-foreground: #ffffff;
+  --color-accent-foreground: #ffffff;
+  --color-secondary-foreground: #1a1a1a;
+}
+
+/* ─── Tailwind v4 Theme ───────────────────────────────────── */
+@theme inline {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+  --font-heading: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-primary-light: var(--color-primary-light);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-foreground: var(--color-secondary-foreground);
+  --color-accent: var(--color-accent);
+  --color-accent-foreground: var(--color-accent-foreground);
+  --color-accent-light: var(--color-accent-light);
+  --color-accent-dark: var(--color-accent-dark);
+  --color-muted: var(--color-muted);
+  --color-muted-foreground: var(--color-muted-foreground);
+  --color-border: var(--color-border);
+  --color-input: var(--color-input);
+  --color-ring: var(--color-ring);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+  --color-info: var(--color-info);
+
+  --radius-lg: 12px;
+  --radius-md: 8px;
+  --radius-sm: 4px;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 3s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(0.98); }
+  }
+}
+
+/* ─── Base Styles ─────────────────────────────────────────── */
+@layer base {
+  * {
+    border-color: var(--color-border);
+    box-sizing: border-box;
+  }
+
+  html {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    @apply bg-background text-foreground selection:bg-primary/10;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  /* Arabic / RTL text */
+  [dir="rtl"], .font-arabic {
+    font-family: var(--font-arabic), var(--font-sans);
+    line-height: 1.85;
+  }
+
+  /* Selection */
+  ::selection {
+    background: rgba(13, 110, 78, 0.15);
+  }
+
+  /* Focus */
+  *:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
+
+/* ─── Component Utilities ─────────────────────────────────── */
+@layer components {
+  .legal-card {
+    @apply bg-white border border-border/50 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] transition-all duration-300;
+  }
+
+  .premium-glass {
+    @apply bg-white/90 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+
+  .paper-shadow {
+    @apply shadow-[0_0_1px_rgba(0,0,0,0.1),0_4px_6px_-1px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.05),0_20px_25px_-5px_rgba(0,0,0,0.05)];
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary-light active:bg-primary-dark shadow-lg shadow-primary/10 transition-all duration-300 rounded-lg;
+  }
+
+  .btn-gold {
+    @apply bg-accent text-accent-foreground hover:bg-accent-light active:bg-accent-dark shadow-lg shadow-accent/20 transition-all duration-300 rounded-lg font-bold;
+  }
+
+  .institutional-header {
+    @apply sticky top-0 z-50 w-full bg-white border-b border-border/50 h-16 shadow-sm;
+  }
+}

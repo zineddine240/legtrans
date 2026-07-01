@@ -1,0 +1,706 @@
+{
+  "Index": {
+    "title": "Welcome to LegTrans DZ"
+  },
+  "TopBar": {
+    "nav": {
+      "ocr": "OCR Extraction",
+      "text_translate": "Text Translation",
+      "doc_translate": "Document Translation",
+      "dashboard": "Dashboard",
+      "glossary": "Contribute to glossary",
+      "assistant": "Legal Assistant"
+    },
+    "userMenu": {
+      "account": "My Account",
+      "logout": "Sign Out"
+    },
+    "mobile": {
+      "navigation": "Navigation"
+    },
+    "billing": "Billing"
+  },
+  "Dashboard": {
+    "header": {
+      "welcome": "Welcome",
+      "title": "Dashboard"
+    },
+    "buttons": {
+      "ocr": "OCR Extraction",
+      "translate": "Document Translation"
+    },
+    "hero": {
+      "badge": "Powered by Artificial Intelligence",
+      "title": "Extract text in seconds",
+      "desc": "Drag and drop your PDF or scanned image — the AI automatically extracts, structures, and exports the text.",
+      "action": "Launch OCR"
+    },
+    "hero_doc": {
+      "badge": "Layout preserved",
+      "title": "Translate your documents completely",
+      "desc": "Upload your files and let the AI translate while keeping the original layout.",
+      "action": "Translate a document"
+    },
+    "hero_translate": {
+      "badge": "Instant translation",
+      "title": "Specialized text translation",
+      "desc": "Paste your legal text for a fast and highly-accurate translation.",
+      "action": "Translate text"
+    },
+    "hero_glossary": {
+      "badge": "Collective intelligence",
+      "title": "Contribute to the DZ glossary",
+      "desc": "Suggest new terminologies to enrich LegTrans DZ's AI.",
+      "action": "Propose a term"
+    },
+    "subscription": {
+      "title": "Subscription",
+      "dueDate": "Due Date",
+      "limits": "Daily Limits",
+      "extractions": "Extractions (OCR)",
+      "translations": "AI Translations",
+      "freeTrial": "Free Trial",
+      "admin": "Admin",
+      "subscribePro": "Subscribe Pro",
+      "subscribePlus": "Subscribe Plus",
+      "upgradePlus": "Upgrade to Plus (6 000 DA)",
+      "maxActive": "✓ Maximum Plus Plan Active",
+      "adminActive": "✓ Unlimited Administrator",
+      "permanent": "Permanent Access",
+      "active": "Active",
+      "trialDays": "7 days trial",
+      "viewPricingDetails": "View plan details & limits"
+    },
+    "stats": {
+      "docs": "Documents Processed",
+      "docsSub": "by our users",
+      "accuracy": "Average OCR Accuracy",
+      "accuracySub": "on legal documents",
+      "time": "Extraction Time",
+      "timeSub": "per page on average"
+    },
+    "support": {
+      "title": "Personalized Support",
+      "heading": "Get dedicated support",
+      "desc": "Book a personalized support session and chat directly with our team.",
+      "action": "Book a session"
+    },
+    "community": {
+      "title": "Community Space",
+      "heading": "Join the community",
+      "desc": "Connect with colleagues and access live help on WhatsApp.",
+      "action": "Join the group"
+    },
+    "features": {
+      "f1_tag": "AI Technology",
+      "f1_title": "OCR Accuracy > 98%",
+      "f1_desc": "High-fidelity extraction of Arabic and French legal documents, even at low resolution or with complex backgrounds.",
+      "f2_tag": "Tables & Structures",
+      "f2_title": "Automatic Table Extraction",
+      "f2_desc": "Intelligent detection and reconstruction of tables — transcripts, judgments — exportable to Excel (.xlsx).",
+      "f3_tag": "Manuscripts & Archives",
+      "f3_title": "Handwriting Recognition",
+      "f3_desc": "Recognition of Maghrebi calligraphy and 19th-century historical documents — civil status acts and colonial archives."
+    },
+    "how": {
+      "tag": "How it works",
+      "title": "4 steps — from extraction to certified translation",
+      "s1_title": "Upload your document",
+      "s1_desc": "PDF, scanned image, or photo — all formats accepted up to 200 MB.",
+      "s2_title": "AI extracts the text",
+      "s2_desc": "Our AI engine analyzes layout, tables, and handwriting with over 98% accuracy.",
+      "s3_title": "Translate in one click",
+      "s3_desc": "Send the extracted text directly to the platform's integrated translation editor.",
+      "s4_title": "Export the final document",
+      "s4_desc": "Download the certified translation in .docx — ready for submission."
+    },
+    "types": {
+      "tag": "Supported document types",
+      "desc": "Optimized for Algerian and Maghrebi legal documents",
+      "badge": "Certified Compliant",
+      "list": [
+        "Old handwritten deeds",
+        "Transcripts & report cards",
+        "Structured tables",
+        "Multi-column documents",
+        "Pen handwriting",
+        "Maghrebi calligraphy",
+        "Administrative forms",
+        "Invoices & quotes",
+        "Multi-column contracts",
+        "Digitized archives",
+        "Mixed Arabic/French documents",
+        "Low-resolution scans"
+      ]
+    },
+    "glossary": {
+      "tag": "Legal Glossary",
+      "title": "Contribute to the DZ legal glossary",
+      "desc": "Suggest new legal terms to enrich LegTrans DZ's AI. Top approved contributors receive one free premium month.",
+      "action": "Propose a term"
+    },
+    "chatbot": {
+      "title": "LegTrans Assistant",
+      "coming_soon": "Coming Soon",
+      "message": "Our legal AI assistant is coming soon! It will help you navigate the platform, answer your questions about translations, and optimize your workflow.",
+      "stay_tuned": "Stay tuned for the update!",
+      "close": "Close"
+    },
+    "nav_assistant": "Legal Assistant"
+  },
+  "Hero": {
+    "badge": " Platform • Translators",
+    "title1": "Legal translation",
+    "title2": "reinvented",
+    "title3": "for Algerian translators.",
+    "desc": "From 6 hours to 10 minutes per document. Our AI specialized in Algerian legal terminology saves you 90% of your time, while ensuring the sovereignty of your data.",
+    "btnDashboard": "Go to my dashboard",
+    "btnStart": "Start free trial",
+    "check1": "No credit card required",
+    "check2": "52 active translators",
+    "check3": "RGPD-DZ compliant",
+    "translationInProgress": "AI TRANSLATION IN PROGRESS...",
+    "accuracy": "Accuracy",
+    "feature1_title": "Layout preserved",
+    "feature1_desc": "Our model faithfully reproduces the structure of your original documents.",
+    "feature2_val": "120+",
+    "feature2_desc": "Hours saved per month"
+  },
+  "Login": {
+    "title": "Welcome back",
+    "subtitle": "Log in to access your secure translation workspace.",
+    "emailConfirmedTitle": "Email address confirmed",
+    "emailConfirmedDesc": "Your email address has been successfully confirmed. Enter your credentials below to permanently activate your workspace.",
+    "emailLabel": "Professional Email Address",
+    "emailPlaceholder": "your@email.dz",
+    "passwordLabel": "Password",
+    "forgotPassword": "Forgot password?",
+    "rememberMe": "Remember me",
+    "loginBtn": "Sign in",
+    "loginLoading": "Signing in...",
+    "or": "Or",
+    "continueGoogle": "Continue with Google",
+    "noAccount": "Don't have an account yet?",
+    "createAccount": "Create an account",
+    "loginFailedTitle": "Login Failed",
+    "loginFailedDesc": "Incorrect email or password.",
+    "loginSuccessTitle": "Welcome!",
+    "loginSuccessDesc": "Redirecting to your workspace..."
+  },
+  "Pricing": {
+    "loginRequired": "Login required",
+    "loginRequiredDesc": "Please create an account or log in to subscribe.",
+    "redirecting": "Redirecting...",
+    "redirectingDesc": "You will be redirected to the secure Chargily payment gateway.",
+    "paymentError": "Payment error",
+    "title": "Choose your plan",
+    "subtitle": "Pricing designed specifically for translators in Algeria",
+    "plans": {
+      "free": {
+        "name": "Free Trial — 7 days",
+        "period": "0 DZD",
+        "features": [
+          "Manuscripts: 3 total requests",
+          "Tables: 2 total requests",
+          "Up to 5 pages per file",
+          "Maximum: 25 pages total during trial",
+          "AI doc translation: 2 documents total",
+          "Unlimited text translation",
+          "Word & Excel export",
+          "After trial: Limited Free"
+        ],
+        "btn": "Start free trial"
+      },
+      "pro": {
+        "name": "Pro",
+        "badge": "Most popular",
+        "period": "/ month",
+        "features": [
+          "Manuscripts: 7 requests / day",
+          "Up to 35 pages / day",
+          "Tables: 3 requests / day",
+          "Up to 15 pages / day",
+          "Up to 5 pages per file",
+          "AI doc translation: 2 documents / day",
+          "Unlimited text translation",
+          "Word & Excel export"
+        ],
+        "btn": "Subscribe now"
+      },
+      "plus": {
+        "name": "Plus",
+        "period": "/ month",
+        "features": [
+          "Manuscripts: 12 requests / day",
+          "Up to 60 pages / day",
+          "Tables: 6 requests / day",
+          "Up to 30 pages / day",
+          "Up to 5 pages per file",
+          "AI doc translation: 10 documents / day",
+          "Unlimited text translation",
+          "Word & Excel export",
+          "Algerian legal glossary",
+          "Ready-to-use templates",
+          "WhatsApp community",
+          "Priority support"
+        ],
+        "btn": "Subscribe now"
+      },
+      "annual": {
+        "name": "Annual / API offer",
+        "price": "On request",
+        "features": [
+          "Custom volume",
+          "API access",
+          "Limits adapted to needs",
+          "Priority support",
+          "Solutions for firms, institutions and enterprises"
+        ],
+        "btn": "Contact us"
+      }
+    },
+    "processing": "Processing...",
+    "acceptedPayments": "Accepted payment methods",
+    "transfer": "BANK TRANSFER",
+    "viewDetailsLink": "View detailed comparison of plans, limits, and OCR modes",
+    "launchNote": "Launch offer: usage limits may be adjusted in the future to ensure service quality and platform stability."
+  },
+  "Register": {
+    "title": "Join LegTrans DZ",
+    "subtitle": "Instant access for professional translators.",
+    "formIncomplete": "Incomplete form",
+    "formIncompleteDesc": "Please check the highlighted fields.",
+    "legalRequired": "Terms required",
+    "legalRequiredDesc": "Please accept the terms of use.",
+    "creating": "Creating your account...",
+    "emailInUse": "Account already exists",
+    "emailInUseDesc": "This email is already in use. You can log in directly.",
+    "weakPassword": "Password too weak",
+    "weakPasswordDesc": "Password must be at least 8 characters.",
+    "signInAction": "Sign In",
+    "successTitle": "Account created successfully!",
+    "lastNameLabel": "Last Name",
+    "lastNamePlaceholder": "Last Name",
+    "firstNameLabel": "First Name",
+    "firstNamePlaceholder": "First Name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "your@email.dz",
+    "phoneLabel": "Phone",
+    "licenseLabel": "License No.",
+    "passwordLabel": "Password",
+    "legalText": "I accept the",
+    "legalLink": "terms of use",
+    "legalSuffix": "and privacy policy.*",
+    "submitBtn": "Create my account",
+    "alreadyRegistered": "Already registered?",
+    "signIn": "Sign in"
+  },
+  "Navbar": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "howItWorks": "How it works",
+    "about": "About",
+    "contact": "Contact",
+    "mySpace": "My Dashboard",
+    "login": "Login",
+    "freeTrial": "Free trial"
+  },
+  "FAQ": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about LegTrans DZ",
+    "items": [
+      {
+        "q": "Does the platform handle the layout of tables and complex documents?",
+        "a": "Yes. Our model faithfully recognizes and reproduces the structure of original documents, including tables, columns, and lists. You save precious time on formatting."
+      },
+      {
+        "q": "Can I export translated documents to Microsoft Word?",
+        "a": "Yes, all your processed documents can be exported in one click to Microsoft Word (.docx) or Excel (.xlsx) to allow easy final revisions."
+      },
+      {
+        "q": "Is the system adapted to Algerian legal terminology?",
+        "a": "Absolutely. LegTrans DZ has been specifically optimized for the Algerian market, with an excellent understanding of legal French, classical Arabic, and local administrative terminology."
+      },
+      {
+        "q": "Are my documents really secure?",
+        "a": "Absolutely. All documents are encrypted with high-security standards. The confidentiality of your documents is our absolute priority."
+      },
+      {
+        "q": "What happens when I exhaust my free trial quota?",
+        "a": "During your trial, you have 5 documents per day. Once the quota is reached, you can wait for the automatic renewal the next day at midnight, or upgrade to the Pro offer for unlimited access."
+      },
+      {
+        "q": "Will AI replace my expertise?",
+        "a": "Absolutely not. AI is an assistant that automates repetitive tasks (data entry, tables, layout). Your expertise remains essential for final review and legal interpretation."
+      },
+      {
+        "q": "What document formats can I process?",
+        "a": "PDF, JPG, PNG, TIFF. We support large documents. Even medium-quality scanned documents are processed with very high accuracy."
+      }
+    ]
+  },
+  "FinalCTA": {
+    "title": "Ready to transform your office?",
+    "subtitle": "Join 52 translators who have already saved hundreds of hours each month.",
+    "btn": "Start free trial",
+    "email": "Email:",
+    "phone": "Phone:"
+  },
+  "HowItWorks": {
+    "title": "How it works",
+    "subtitle": "From upload to translated document in 4 simple steps",
+    "steps": [
+      {
+        "title": "Upload",
+        "text": "Drag your PDF, JPG, or scan into the intuitive interface."
+      },
+      {
+        "title": "Our Models process",
+        "text": "OCR + specialized automatic translation"
+      },
+      {
+        "title": "Review",
+        "text": "Read and validate our model's suggestions via our editor."
+      },
+      {
+        "title": "Certify",
+        "text": "Export your finalized document ready for your stamp."
+      }
+    ]
+  },
+  "Account": {
+    "header": {
+      "settings": "Settings",
+      "title": "My Account"
+    },
+    "profile": {
+      "title": "Profile",
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "profession": "Profession / Office",
+      "license": "License Number",
+      "notProvided": "Not specified",
+      "editBtn": "Edit My Information",
+      "modifyInfoTitle": "Profile Edit",
+      "modifyInfoDesc": "This feature will be available very soon.",
+      "defaultDisplayName": "Dear Translator"
+    },
+    "subscription": {
+      "title": "Subscription",
+      "currentPlan": "Current Plan",
+      "freeTrial": "Free Trial",
+      "pro": "Pro",
+      "plus": "Plus",
+      "expirationDate": "Expiration Date",
+      "subscribePro": "Subscribe to Pro (4000 DZD)",
+      "subscribePlus": "Subscribe to Plus (6000 DZD)",
+      "upgradePlus": "Upgrade to Plus (6,000 DZD)",
+      "paymentHistory": "Payment History",
+      "noPayment": "No payments recorded yet.",
+      "loginRequired": "Please log in to subscribe.",
+      "redirecting": "Redirecting to payment...",
+      "paymentError": "Payment error",
+      "sessionError": "An error occurred while creating the session."
+    },
+    "usage": {
+      "title": "Usage",
+      "ocrTitle": "OCR — Image Extraction",
+      "ocrDesc": "Used today",
+      "docTitle": "AI Document Translation",
+      "docDesc": "Used today",
+      "textTitle": "Text Translation",
+      "textUnlimited": "✓ Unlimited usage",
+      "textReasonable": "Reasonable usage (trial)",
+      "resetNote": "Resets automatically at 00:00 every night"
+    },
+    "security": {
+      "title": "Security",
+      "changePassword": "Change Password",
+      "changePasswordDesc": "Reset via your email address",
+      "emailVerification": "Email Verification",
+      "emailVerified": "Your email is verified ✓",
+      "emailResending": "Resending email...",
+      "emailNotVerified": "Email not verified yet — Click to resend activation",
+      "logout": "Log Out",
+      "logoutDesc": "End session on this device",
+      "alreadyVerified": "Your email address is already verified!",
+      "resendSuccess": "Activation email resent!",
+      "resendSuccessDesc": "Please check your inbox and spam folder.",
+      "resendFailed": "Failed to send confirmation email.",
+      "resendError": "An error occurred during sending."
+    },
+    "assistance": {
+      "title": "Assistance",
+      "bookSupport": "Book Support",
+      "bookSupportDescPaid": "Send a WhatsApp message directly",
+      "bookSupportDescFree": "Reserved for Pro & Plus subscribers",
+      "joinCommunity": "Join WhatsApp Community",
+      "joinCommunityDescPaid": "Private group for LegTrans translators",
+      "joinCommunityDescFree": "Reserved for Pro & Plus subscribers",
+      "contactSupport": "Contact Support",
+      "contactSupportDesc": "contact@legtransdz.com",
+      "communityError": "Access Reserved",
+      "communityErrorDesc": "The community is reserved for Pro & Plus subscribers.",
+      "supportError": "Access Reserved",
+      "supportErrorDesc": "Assistance is reserved for Pro & Plus subscribers.",
+      "supportMessage": "Hello, I would like to book a support session regarding LegTrans DZ.\nMy Name:\nMy Email:\nSubject:"
+    }
+  },
+  "Solution": {
+    "tag": "THE LEGTRANS DZ SOLUTION",
+    "title": "Three pillars to transform your profession",
+    "pillar1": {
+      "tag": "Pillar 1 — High-Precision OCR",
+      "title": "Read all your documents, even the oldest ones",
+      "desc": "Our specialized OCR recognizes French colonial manuscripts, handwritten deeds, complex tables, and seals with unmatched accuracy.",
+      "doc_preview": "[Colonial Handwritten Document 1954...]",
+      "accuracy": "93.7% Accuracy",
+      "features": [
+        "Colonial and modern manuscripts",
+        "Structured tables and forms",
+        "Word, Excel, certified PDF export"
+      ]
+    },
+    "pillar2": {
+      "tag": "Pillar 2 — Al-DZ AI",
+      "title": "An AI trained on Algerian law",
+      "desc": "Our proprietary model is specifically trained on Algerian legal terminology, from the Civil Code to Supreme Court judgments.",
+      "preview": {
+        "acte_civil": "Acte Civil → Civil Deed",
+        "cour_supreme": "Cour Suprême → Supreme Court"
+      },
+      "features": [
+        "50,000+ Algerian legal terms",
+        "Evolving personal glossary",
+        "Modes: literal / interpretative"
+      ]
+    },
+    "pillar3": {
+      "tag": "Pillar 3 — Sovereignty",
+      "title": "Your data stays in Algeria",
+      "desc": "Unlike foreign solutions, LegTrans DZ deploys its infrastructure in Algeria. Your documents never leave national soil.",
+      "preview": {
+        "title": "Sovereign Data",
+        "subtitle": "Local Infrastructure"
+      },
+      "features": [
+        "Servers in Algeria (Phase 2)",
+        "End-to-end encryption",
+        "Compliant with the DZ regulatory framework",
+        "Complete audit trail"
+      ]
+    }
+  },
+  "Testimonials": {
+    "tag": "EXPRESSION CORNER",
+    "title": "We value your feedback",
+    "desc": "Are you testing LegTrans DZ? Help us shape the future of translation by sharing your experience.",
+    "form": {
+      "tag": "Fill out your tester form",
+      "name_label": "Full Name",
+      "name_placeholder": "Your full name",
+      "rating_label": "Your Rating",
+      "quote_label": "Your Feedback / Testimonial",
+      "quote_placeholder": "Share your thoughts on translation accuracy, OCR speed, or document export...",
+      "btn_submit": "Submit my feedback",
+      "btn_sending": "Sending...",
+      "success_title": "Thank you for your feedback!",
+      "success_desc": "Your testimonial has been saved. Your opinions greatly help us improve LegTrans for all translators in Algeria.",
+      "btn_reset": "Write another review"
+    },
+    "preview": {
+      "tag": "Live preview of your review",
+      "quote_placeholder": "Your feedback will appear here as you type...",
+      "name_placeholder": "Translator's Name",
+      "role_placeholder": "Platform Tester"
+    },
+    "list": {
+      "tag": "CLIENT TESTIMONIALS",
+      "title": "What translators are saying in real time"
+    },
+    "defaults": [
+      {
+        "name": "Lilia L",
+        "role": " Interpreter Translator",
+        "exp": "Badji Mokhtar Univ",
+        "quote": "Tested and approved! Well done for this innovative tool that honors the Translation Department of Badji Mokhtar University - Annaba. I am delighted to see one of my brilliant students carrying such an ambitious project. Keep going, I highly encourage you! ✨🎉"
+      },
+      {
+        "name": "Yacine",
+        "role": "Translator",
+        "exp": "Translator",
+        "quote": "An excellent experience, a wonderful platform, I tried it and the result blew me away!"
+      }
+    ]
+  },
+  "Footer": {
+    "desc": "The premier technological tool for translation professionals. Precision, speed, and absolute confidentiality.",
+    "made_in": "Made in Algeria",
+    "col_product": {
+      "title": "Product",
+      "features": "Features",
+      "pricing": "Pricing",
+      "security": "Security",
+      "roadmap": "Roadmap",
+      "pricingDetails": "Detailed Pricing & OCR"
+    },
+    "col_company": {
+      "title": "Company",
+      "about": "About",
+      "blog": "Blog",
+      "careers": "Careers",
+      "press": "Press"
+    },
+    "col_legal": {
+      "title": "Legal",
+      "terms": "Terms of Use",
+      "privacy": "Privacy Policy",
+      "mentions": "Legal Notice",
+      "compliance": "Compliance"
+    },
+    "rights": "© 2026 LegTrans DZ. All rights reserved.",
+    "supported_by": "Supported by the Ministry of Knowledge Economy",
+    "startup_label": "Startup Label in progress"
+  },
+  "Problem": {
+    "tag": "SOVEREIGNTY & AI EXCELLENCE",
+    "title": "Artificial Intelligence Crafted for Translators",
+    "subtitle": "Discover how our specialized technology transforms legal translation in Algeria with uncompromised speed, accuracy, and security.",
+    "metric1_val": "-90%",
+    "metric1_lbl": "Manual Typing Eliminated",
+    "metric1_desc": "Drastic reduction in the time spent manually copying legal documents.",
+    "metric2_val": "98.4%",
+    "metric2_lbl": "Terminology Accuracy",
+    "metric2_desc": "Specially trained on the Algerian administrative, legal, and judicial vocabulary.",
+    "metric3_val": "10 min",
+    "metric3_lbl": "Per Complex File",
+    "metric3_desc": "Instead of 6 hours of tedious manual typing and page formatting.",
+    "f1_title": "Specialized Legal AI",
+    "f1_desc": "Trained on Algerian legislation, from the Civil Code to Supreme Court judgements.",
+    "f2_title": "Massive Time Savings",
+    "f2_desc": "Eliminate repetitive manual typing. Focus your expertise entirely on certification and review.",
+    "f3_title": "Professional DOCX Export",
+    "f3_desc": "Download fully structured Word documents (.docx) preserving original tables and fonts.",
+    "f4_title": "High-Fidelity OCR",
+    "f4_desc": "Ultra-precise text extraction from low-resolution scans, stamps, and handwriting.",
+    "f5_title": "Ultra-Fast Workflow",
+    "f5_desc": "A fluid interface made for experts: drag and drop, review side-by-side, and finalize instantly.",
+    "f6_title": "Sovereignty & Security",
+    "f6_desc": "Absolute security for sensitive legal files and strict compliance with national privacy frameworks."
+  },
+  "TrustBar": {
+    "tag": "They trust us:",
+    "translators": "TRANSLATORS ASSOCIATION",
+    "startup": "STARTUP LABEL DZ"
+  },
+  "Glossary": {
+    "hero": {
+      "tag": "COLLECTIVE INTELLIGENCE",
+      "title": "Enrich the Algerian Legal Glossary",
+      "desc": "Contribute to terminological excellence by suggesting precise terms and translations. Every suggestion undergoes manual validation by our expert committee."
+    },
+    "ranking": {
+      "title": "Contributor Rankings",
+      "desc": "Recognizing dedication within our community.",
+      "reward_title": "Bi-Annual Reward",
+      "reward_desc": "Every 6 months, the top glossary contributor receives 1 free month of Premium membership.",
+      "badge_pioneer": "Pioneer",
+      "badge_expert": "Expert",
+      "badge_master": "Master"
+    },
+    "form": {
+      "title": "Suggest a new expression",
+      "original_term": "Original term",
+      "original_placeholder": "E.g., Référé-provision, Saisie-arrêt...",
+      "suggested_translation": "Suggested translation",
+      "suggested_placeholder": "E.g., أمر مستعجل بأداء كفالة...",
+      "source_lang": "Source language",
+      "target_lang": "Target language",
+      "category": "Legal Category",
+      "category_placeholder": "Select a category",
+      "context": "Context / Source",
+      "context_placeholder": "E.g., Algerian Civil Code, Article 124...",
+      "optional": "optional",
+      "submit": "Submit Proposal",
+      "submitting": "Transmitting..."
+    },
+    "feedback": {
+      "title": "Proposal Submitted Successfully",
+      "subtitle": "Pending Validation",
+      "desc": "Your contribution has been saved. Our expert committee will review it within 48 hours. No changes are applied automatically.",
+      "timeline_step1": "Proposal recorded",
+      "timeline_step2": "Legal compliance verification",
+      "timeline_step3": "Validation & database integration",
+      "another": "Propose another terminology"
+    },
+    "categories": {
+      "civil": "Civil Law",
+      "penal": "Criminal Law",
+      "commercial": "Commercial Law",
+      "administrative": "Administrative Law",
+      "vital": "Civil Status",
+      "": " Documents",
+      "contracts": "Contracts",
+      "other": "Other"
+    }
+  },
+  "Billing": {
+    "title": "Billing",
+    "subtitle": "Manage your subscriptions and view your payment history",
+    "activeSubscription": "Active Subscription",
+    "history": "Payment History",
+    "date": "Date",
+    "reference": "Reference",
+    "plan": "Plan",
+    "amount": "Amount",
+    "status": "Status",
+    "invoice": "Invoice",
+    "download": "Download",
+    "paid": "Paid",
+    "noHistory": "No payment history found.",
+    "validUntil": "Valid until",
+    "notSubscribed": "You do not have an active subscription."
+  },
+  "OCRSelection": {
+    "title": "What type of document do you want to process?",
+    "subtitle": "Choose the mode adapted to your document.",
+    "mode_hw_title": "Old documents / manuscripts",
+    "mode_hw_desc": "For old deeds, readable handwritten documents, stamps and complex pages.",
+    "mode_hw_examples_label": "Examples",
+    "mode_hw_examples": "Old deeds, contracts, historical documents, readable manuscripts.",
+    "mode_table_title": "Tables",
+    "mode_table_desc": "For tables, statements, forms and structured documents.",
+    "mode_table_examples_label": "Examples",
+    "mode_table_examples": "Statements, tables, forms, documents organized in rows and columns.",
+    "btn_continue": "Continue",
+    "btn_change_mode": "Change mode"
+  },
+  "Assistant": {
+    "title": "Legal Assistant",
+    "subtitle": "Specialized in law (Algeria, France, Spain, Italy).",
+    "placeholder": "Ask your legal question...",
+    "disclaimer": "This assistant provides general legal information for guidance only. It does not replace advice from a lawyer, notary, certified translator, or qualified professional.",
+    "privacy": "This conversation history is not saved.",
+    "empty_state": "How can I help you today?",
+    "suggest1": "Explain the difference between a birth certificate and a family record in Algeria.",
+    "suggest2": "What precautions should I take before translating a legal document?",
+    "suggest3": "Explain an Algerian legal term in simple English.",
+    "send": "Send",
+    "limit_reached": "Daily message limit reached."
+  },
+  "About": {
+    "title": "About LegTrans DZ",
+    "missionTitle": "1. Our Mission",
+    "missionDesc": "LegTrans DZ is the first Algerian technological platform designed specifically to assist official translators and legal professionals. Our mission is to automate time-consuming tasks (typing, formatting, complex character recognition) to allow translators to focus on the essence of their profession: legal expertise and certification.",
+    "historyTitle": "2. Our Story: An academic and innovative project",
+    "historyDesc": "Born from a shared passion for languages and technology, LegTrans DZ was created under the Ministerial Decree 1275 (One Diploma - One Startup). Designed by Translation and Interpreting students, the platform is the result of academic research aimed at bridging the gap between traditional legal translation and the requirements of the digital age.",
+    "sovereigntyTitle": "3. Artificial Intelligence and Sovereignty",
+    "sovereigntyDesc": "We firmly believe in digital sovereignty. That is why our Artificial Intelligence is specifically developed and trained on the Algerian context, relying particularly on the official terminology of the Official Journal of the Algerian Republic. We thus offer unparalleled accuracy and perfect adaptation to the realities of local law.",
+    "glossaryTitle": "4. The Collaborative Glossary: By and for translators",
+    "glossaryDesc": "Because technology does not replace human expertise, we have integrated a collaborative glossary system. Each translator can propose, correct, and validate legal terms. Together, we are building the largest legal translation memory in Algeria, validated by the collective intelligence of the profession.",
+    "legalTitle": "5. Legal Framework and Confidentiality",
+    "legalDesc": "As an officially registered Startup project, we place the protection of your data at the center of our priorities. LegTrans DZ is committed to strictly respecting the regulations in force (notably Law 18-07 on data protection), thus guaranteeing absolute confidentiality for you and your clients.",
+    "cta": "Are you an official translator? Join the community today."
+  }
+}

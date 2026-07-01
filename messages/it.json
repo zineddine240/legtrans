@@ -1,0 +1,677 @@
+{
+  "Index": {
+    "title": "Benvenuto in LegTrans DZ"
+  },
+  "TopBar": {
+    "nav": {
+      "ocr": "Estrazione OCR",
+      "text_translate": "Traduzione Testo",
+      "doc_translate": "Traduzione Documenti",
+      "dashboard": "Pannello di Controllo",
+      "glossary": "Contribuisci al glossario"
+    },
+    "userMenu": {
+      "account": "Il Mio Account",
+      "logout": "Esci"
+    },
+    "mobile": {
+      "navigation": "Navigazione"
+    },
+    "billing": "Fatturazione"
+  },
+  "Dashboard": {
+    "header": {
+      "welcome": "Benvenuto",
+      "title": "Pannello di Controllo"
+    },
+    "buttons": {
+      "ocr": "Estrazione OCR",
+      "translate": "Traduzione Documenti"
+    },
+    "hero": {
+      "badge": "Basato sull'Intelligenza Artificiale",
+      "title": "Estrai il testo in pochi secondi",
+      "desc": "Trascina il tuo PDF o immagine scansionata — l'IA estrae, struttura ed esporta il testo automaticamente.",
+      "action": "Avvia OCR"
+    },
+    "hero_doc": {
+      "badge": "Layout conservato",
+      "title": "Traduci i tuoi documenti completamente",
+      "desc": "Carica i tuoi file e lascia che l'IA traduca mantenendo il layout originale.",
+      "action": "Traduci un documento"
+    },
+    "hero_translate": {
+      "badge": "Traduzione istantanea",
+      "title": "Traduzione testo specializzata",
+      "desc": "Incolla il tuo testo giuridico per una traduzione asseverata veloce e ultra-precisa.",
+      "action": "Traduci testo"
+    },
+    "hero_glossary": {
+      "badge": "Intelligenza collettiva",
+      "title": "Contribuisci al glossario DZ",
+      "desc": "Suggerisci nuove terminologie per arricchire l'IA di LegTrans DZ.",
+      "action": "Proponi un termine"
+    },
+    "subscription": {
+      "title": "Abbonamento",
+      "dueDate": "Data di Scadenza",
+      "limits": "Limiti Giornalieri",
+      "extractions": "Estrazioni (OCR)",
+      "translations": "Traduzioni con IA",
+      "freeTrial": "Prova Gratuita",
+      "admin": "Admin",
+      "subscribePro": "Abbonati Pro",
+      "subscribePlus": "Abbonati Plus",
+      "upgradePlus": "Passa a Plus (6 000 DA)",
+      "maxActive": "✓ Piano Plus Massimo Attivo",
+      "adminActive": "✓ Amministratore Illimitato",
+      "permanent": "Accesso Permanente",
+      "active": "Attivo",
+      "trialDays": "7 giorni di prova",
+      "viewPricingDetails": "Visualizza i dettagli del piano e i limiti"
+    },
+    "stats": {
+      "docs": "Documenti Elaborati",
+      "docsSub": "dai nostri utenti",
+      "accuracy": "Precisione OCR Media",
+      "accuracySub": "su documenti legali",
+      "time": "Tempo di Estrazione",
+      "timeSub": "per pagina in media"
+    },
+    "support": {
+      "title": "Supporto Personalizzato",
+      "heading": "Ottieni supporto dedicato",
+      "desc": "Prenota una sessione di supporto personalizzata e chatta direttamente con il nostro team.",
+      "action": "Prenota una sessione"
+    },
+    "community": {
+      "title": "Spazio Comunità",
+      "heading": "Unisciti alla comunità",
+      "desc": "Connettiti con i colleghi e accedi all'aiuto dal vivo su WhatsApp.",
+      "action": "Unisciti al gruppo"
+    },
+    "features": {
+      "f1_tag": "Tecnologia IA",
+      "f1_title": "Precisione OCR superiore al 98%",
+      "f1_desc": "Estrazione ad alta fedeltà di documenti legali arabi e francesi, anche a bassa risoluzione o con sfondi complessi.",
+      "f2_tag": "Tabelle e Strutture",
+      "f2_title": "Estrazione automatica delle tabelle",
+      "f2_desc": "Rilevamento e ricostruzione intelligente delle tabelle — trascrizioni, sentenze — esportabili in Excel (.xlsx).",
+      "f3_tag": "Manoscritti e Archivi",
+      "f3_title": "Riconoscimento della scrittura a mano",
+      "f3_desc": "Riconoscimento della calligrafia maghrebina e dei documenti storici del XIX secolo — atti di stato civile e archivi coloniali."
+    },
+    "how": {
+      "tag": "Come funziona",
+      "title": "4 passaggi — dall'estrazione alla traduzione certificata",
+      "s1_title": "Carica il tuo documento",
+      "s1_desc": "PDF, immagine scansionata o foto — si accettano tutti i formati fino a 200 MB.",
+      "s2_title": "L'IA estrae il testo",
+      "s2_desc": "Il nostro motore IA analizza il layout, le tabelle e la scrittura a mano con una precisione superiore al 98%.",
+      "s3_title": "Traduci in un clic",
+      "s3_desc": "Invia il testo estratto direttamente all'editor di traduzione giurata integrato della piattaforma.",
+      "s4_title": "Esporta il documento finale",
+      "s4_desc": "Scarica la traduzione certificata in .docx — pronta per la presentazione ufficiale."
+    },
+    "types": {
+      "tag": "Tipi di documenti supportati",
+      "desc": "Ottimizzato per documenti legali algerini e maghrebini",
+      "badge": "Certificato di Conformità",
+      "list": [
+        "Antichi atti manoscritti",
+        "Pagelle e trascrizioni",
+        "Tabelle strutturate",
+        "Documenti a più colonne",
+        "Scrittura a pennino",
+        "Calligrafia maghrebina",
+        "Moduli amministrativi",
+        "Fatture e preventivi",
+        "Contratti a più colonne",
+        "Archivi digitalizzati",
+        "Documenti misti arabo/francese",
+        "Scansioni a bassa risoluzione"
+      ]
+    },
+    "glossary": {
+      "tag": "Glossario Giuridico",
+      "title": "Contribuisci al glossario giuridico DZ",
+      "desc": "Suggerisci nuovi termini legali per arricchire l'IA di LegTrans DZ. Le migliori proposte ricevono un mese di abbonamento premium gratuito.",
+      "action": "Proponi un termine"
+    },
+    "chatbot": {
+      "title": "Assistente LegTrans",
+      "coming_soon": "Prossimamente disponible",
+      "message": "Il nostro assistente legale basato su IA sarà disponibile a breve! Ti aiuterà a navigare sulla piattaforma, risponderà alle tue domande sulle traduzioni e ottimizzerà il tuo flusso di lavoro.",
+      "stay_tuned": "Resta sintonizzato per l'aggiornamento!",
+      "close": "Chiudi"
+    }
+  },
+  "Hero": {
+    "badge": "Piattaforma Ufficiale • Traduttori Giurati",
+    "title1": "La traduzione legale",
+    "title2": "reinventata",
+    "title3": "per traduttori algerini.",
+    "desc": "Da 6 ore a 10 minuti per documento. La nostra IA specializzata in terminologia legale algerina ti fa risparmiare il 90% del tempo, garantendo la sovranità dei tuoi dati.",
+    "btnDashboard": "Vai alla mia dashboard",
+    "btnStart": "Inizia la prova gratuita",
+    "check1": "Nessuna carta di credito richiesta",
+    "check2": "52 traduttori attivi",
+    "check3": "Conforme RGPD-DZ",
+    "translationInProgress": "TRADUZIONE IA IN CORSO...",
+    "accuracy": "Precisione",
+    "feature1_title": "Layout conservato",
+    "feature1_desc": "Il nostro modello riproduce fedelmente la struttura dei tuoi documenti originali.",
+    "feature2_val": "120+",
+    "feature2_desc": "Ore risparmiate al mese"
+  },
+  "Login": {
+    "title": "Bentornato",
+    "subtitle": "Accedi per entrare nel tuo spazio di traduzione sicuro.",
+    "emailConfirmedTitle": "Indirizzo e-mail confermato",
+    "emailConfirmedDesc": "Il tuo indirizzo e-mail è stato confermato. Inserisci le tue credenziali qui sotto per attivare definitivamente il tuo spazio.",
+    "emailLabel": "Indirizzo E-mail Professionale",
+    "emailPlaceholder": "tuo@email.dz",
+    "passwordLabel": "Password",
+    "forgotPassword": "Hai dimenticato la password?",
+    "rememberMe": "Ricordami",
+    "loginBtn": "Accedi",
+    "loginLoading": "Accesso in corso...",
+    "or": "O",
+    "continueGoogle": "Continua con Google",
+    "noAccount": "Non hai ancora un account?",
+    "createAccount": "Crea un account",
+    "loginFailedTitle": "Accesso non riuscito",
+    "loginFailedDesc": "E-mail o password non corretti.",
+    "loginSuccessTitle": "Benvenuto!",
+    "loginSuccessDesc": "Reindirizzamento al tuo spazio di lavoro..."
+  },
+  "Pricing": {
+    "loginRequired": "Accesso richiesto",
+    "loginRequiredDesc": "Crea un account o accedi per abbonarti.",
+    "redirecting": "Reindirizzamento...",
+    "redirectingDesc": "Verrai reindirizzato al gateway di pagamento sicuro Chargily.",
+    "paymentError": "Errore di pagamento",
+    "title": "Scegli il tuo piano",
+    "subtitle": "Prezzi progettati specificamente per traduttori giurati in Algeria",
+    "plans": {
+      "free": {
+        "name": "Prova gratuita — 7 giorni",
+        "period": "0 DZD",
+        "features": [
+          "Manoscritti: 3 richieste totali",
+          "Tabelle: 2 richieste totali",
+          "Fino a 5 pagine per file",
+          "Massimo: 25 pagine totali durante la prova",
+          "Traduzione IA documenti: 2 documenti totali",
+          "Traduzione testo illimitata",
+          "Esportazione Word ed Excel",
+          "Dopo la prova: Gratuito limitato"
+        ],
+        "btn": "Inizia la prova gratuita"
+      },
+      "pro": {
+        "name": "Pro",
+        "badge": "Il più popolare",
+        "period": "/ mese",
+        "features": [
+          "Manoscritti: 7 richieste / giorno",
+          "Fino a 35 pagine / giorno",
+          "Tabelle: 3 richieste / giorno",
+          "Fino a 15 pagine / giorno",
+          "Fino a 5 pagine per file",
+          "Traduzione IA documenti: 2 documenti / giorno",
+          "Traduzione testo illimitata",
+          "Esportazione Word ed Excel"
+        ],
+        "btn": "Abbonati ora"
+      },
+      "plus": {
+        "name": "Plus",
+        "period": "/ mese",
+        "features": [
+          "Manoscritti: 12 richieste / giorno",
+          "Fino a 60 pagine / giorno",
+          "Tabelle: 6 richieste / giorno",
+          "Fino a 30 pagine / giorno",
+          "Fino a 5 pagine per file",
+          "Traduzione IA documenti: 10 documenti / giorno",
+          "Traduzione testo illimitata",
+          "Esportazione Word ed Excel",
+          "Glossario giuridico algerino",
+          "Modelli pronti all'uso",
+          "Comunità WhatsApp",
+          "Supporto prioritario"
+        ],
+        "btn": "Abbonati ora"
+      },
+      "annual": {
+        "name": "Offerta annuale / API",
+        "price": "Su richiesta",
+        "features": [
+          "Volume personalizzato",
+          "Accesso API",
+          "Limiti adattati alle esigenze",
+          "Supporto prioritario",
+          "Soluzioni per studi, istituzioni e aziende"
+        ],
+        "btn": "Contattaci"
+      }
+    },
+    "processing": "Elaborazione...",
+    "acceptedPayments": "Metodi di pagamento accettati",
+    "transfer": "BONIFICO BANCARIO",
+    "viewDetailsLink": "Visualizza il confronto dettagliato di piani, limiti e modalità OCR",
+    "launchNote": "Offerta di lancio: i limiti di utilizzo potrebbero essere modificati in futuro per garantire la qualità del servizio e la stabilità della piattaforma."
+  },
+  "Register": {
+    "title": "Unisciti a LegTrans DZ",
+    "subtitle": "Accesso istantaneo per traduttori professionisti.",
+    "formIncomplete": "Modulo incompleto",
+    "formIncompleteDesc": "Si prega di verificare i campi evidenziati.",
+    "legalRequired": "Termini richiesti",
+    "legalRequiredDesc": "Accetta i termini di utilizzo.",
+    "creating": "Creazione del tuo account in corso...",
+    "emailInUse": "Account già esistente",
+    "emailInUseDesc": "Questa email è già in uso. Puoi accedere direttamente.",
+    "weakPassword": "Password troppo debole",
+    "weakPasswordDesc": "La password deve contenere almeno 8 caratteri.",
+    "signInAction": "Accedi",
+    "successTitle": "Account creato con successo!",
+    "lastNameLabel": "Cognome",
+    "lastNamePlaceholder": "Cognome",
+    "firstNameLabel": "Nome",
+    "firstNamePlaceholder": "Nome",
+    "emailLabel": "Email",
+    "emailPlaceholder": "tuo@email.dz",
+    "phoneLabel": "Telefono",
+    "licenseLabel": "N° Licenza",
+    "passwordLabel": "Password",
+    "legalText": "Accetto i",
+    "legalLink": "termini di utilizzo",
+    "legalSuffix": "e l'informativa sulla privacy.*",
+    "submitBtn": "Crea il mio account",
+    "alreadyRegistered": "Già registrato?",
+    "signIn": "Accedi"
+  },
+  "Navbar": {
+    "features": "Funzionalità",
+    "pricing": "Prezzi",
+    "howItWorks": "Come funziona",
+    "about": "Chi siamo",
+    "contact": "Contatti",
+    "mySpace": "La mia Dashboard",
+    "login": "Accedi",
+    "freeTrial": "Prova gratuita"
+  },
+  "FAQ": {
+    "title": "Domande frequenti",
+    "subtitle": "Tutto ciò che devi sapere su LegTrans DZ",
+    "items": [
+      {
+        "q": "La piattaforma gestisce il layout di tabelle e documenti complessi?",
+        "a": "Sì. Il nostro modello riconosce e riproduce fedelmente la struttura dei documenti originali, incluse tabelle, colonne ed elenchi."
+      },
+      {
+        "q": "Posso esportare i documenti tradotti in Microsoft Word?",
+        "a": "Sì, tutti i documenti elaborati possono essere esportati con un clic in Microsoft Word (.docx) o Excel (.xlsx)."
+      },
+      {
+        "q": "Il sistema è adatto al lessico giuridico algerino?",
+        "a": "Assolutamente. LegTrans DZ è stato ottimizzato specificamente per il mercato algerino, con un'eccellente comprensione del francese giuridico, dell'arabo classico e della terminologia amministrativa locale."
+      },
+      {
+        "q": "I miei documenti sono davvero sicuri?",
+        "a": "Assolutamente. Tutti i documenti sono crittografati con standard di alta sicurezza. La riservatezza dei tuoi atti ufficiali è la nostra priorità assoluta."
+      },
+      {
+        "q": "Cosa succede quando esaurisco la quota di prova gratuita?",
+        "a": "Durante la prova, hai 5 documenti al giorno. Una volta raggiunta la quota, puoi aspettare il rinnovo automatico il giorno successivo a mezzanotte, o passare al piano Pro."
+      },
+      {
+        "q": "L'IA sostituirà la mia competenza?",
+        "a": "Assolutamente no. L'IA è un assistente che automatizza le attività ripetitive. La tua competenza rimane indispensabile per la revisione finale e l'interpretazione giuridica."
+      },
+      {
+        "q": "Quali formati di documento posso elaborare?",
+        "a": "PDF, JPG, PNG, TIFF. Supportiamo documenti di grandi dimensioni. Anche i documenti scansionati di qualità media vengono elaborati con altissima precisione."
+      }
+    ]
+  },
+  "FinalCTA": {
+    "title": "Pronto a trasformare il tuo studio?",
+    "subtitle": "Unisciti ai 52 traduttori giurati che hanno già risparmiato centinaia di ore ogni mese.",
+    "btn": "Inizia la prova gratuita",
+    "email": "Email:",
+    "phone": "Telefono:"
+  },
+  "HowItWorks": {
+    "title": "Come funziona",
+    "subtitle": "Dall'upload al documento tradotto in 4 semplici passaggi",
+    "steps": [
+      {
+        "title": "Carica",
+        "text": "Trascina il tuo PDF, JPG o scansione nell'interfaccia intuitiva."
+      },
+      {
+        "title": "I nostri modelli elaborano",
+        "text": "OCR + traduzione automatica specializzata"
+      },
+      {
+        "title": "Verifica",
+        "text": "Leggi e valida i suggerimenti del nostro modello tramite l'editor."
+      },
+      {
+        "title": "Certifica",
+        "text": "Esporta il tuo documento finalizzato pronto per il tuo timbro."
+      }
+    ]
+  },
+  "Account": {
+    "header": {
+      "settings": "Impostazioni",
+      "title": "Il Mio Account"
+    },
+    "profile": {
+      "title": "Profilo",
+      "fullName": "Nome completo",
+      "email": "E-mail",
+      "phone": "Telefono",
+      "profession": "Professione / Studio",
+      "license": "Numero di licenza",
+      "notProvided": "Non specificato",
+      "editBtn": "Modifica informazioni",
+      "modifyInfoTitle": "Modifica Profilo",
+      "modifyInfoDesc": "Questa funzionalità sarà disponible molto presto.",
+      "defaultDisplayName": "Caro Traduttore"
+    },
+    "subscription": {
+      "title": "Abbonamento",
+      "currentPlan": "Piano attuale",
+      "freeTrial": "Prova Gratuita",
+      "pro": "Pro",
+      "plus": "Plus",
+      "expirationDate": "Data di scadenza",
+      "subscribePro": "Abbonati a Pro (4000 DZD)",
+      "subscribePlus": "Abbonati a Plus (6000 DZD)",
+      "upgradePlus": "Passa a Plus (6,000 DZD)",
+      "paymentHistory": "Cronologia dei pagamenti",
+      "noPayment": "Nessun pagamento registrato al momento.",
+      "loginRequired": "Accedi per abbonarti.",
+      "redirecting": "Reindirizzamento al pagamento...",
+      "paymentError": "Errore di pagamento",
+      "sessionError": "Si è verificato un errore durante la creazione della sessione."
+    },
+    "usage": {
+      "title": "Utilizzo",
+      "ocrTitle": "OCR — Estrazione immagini",
+      "ocrDesc": "Usato oggi",
+      "docTitle": "Traduzione documenti AI",
+      "docDesc": "Usato oggi",
+      "textTitle": "Traduzione testo",
+      "textUnlimited": "✓ Utilizzo illimitato",
+      "textReasonable": "Utilizzo ragionevole (prova)",
+      "resetNote": "Si ripristina automaticamente alle 00:00 ogni notte"
+    },
+    "security": {
+      "title": "Sicurezza",
+      "changePassword": "Cambia password",
+      "changePasswordDesc": "Reimposta tramite il tuo indirizzo e-mail",
+      "emailVerification": "Verifica e-mail",
+      "emailVerified": "La tua e-mail è verificata ✓",
+      "emailResending": "Rinvio e-mail...",
+      "emailNotVerified": "E-mail non ancora verificata — Clicca per rinviare l'attivazione",
+      "logout": "Disconnettiti",
+      "logoutDesc": "Chiudi la sessione su questo dispositivo",
+      "alreadyVerified": "Il tuo indirizzo e-mail è già confermato!",
+      "resendSuccess": "E-mail di attivazione reinviata!",
+      "resendSuccessDesc": "Controlla la tua casella di posta e la cartella spam.",
+      "resendFailed": "Impossibile inviare l'e-mail di conferma.",
+      "resendError": "Si è verificato un errore durante l'invio."
+    },
+    "assistance": {
+      "title": "Assistenza",
+      "bookSupport": "Prenota assistenza",
+      "bookSupportDescPaid": "Invia un messaggio WhatsApp direttamente",
+      "bookSupportDescFree": "Riservato agli abbonati Pro & Plus",
+      "joinCommunity": "Unisci alla community WhatsApp",
+      "joinCommunityDescPaid": "Gruppo privato per traduttori LegTrans",
+      "joinCommunityDescFree": "Riservato agli abbonati Pro & Plus",
+      "contactSupport": "Contatta il supporto",
+      "contactSupportDesc": "contact@legtransdz.com",
+      "communityError": "Accesso Riservato",
+      "communityErrorDesc": "La community è riservata agli abbonati Pro & Plus.",
+      "supportError": "Accesso Riservato",
+      "supportErrorDesc": "L'assistenza è riservata agli abbonati Pro & Plus.",
+      "supportMessage": "Buongiorno, desidero prenotare un'assistenza per quanto riguarda LegTrans DZ.\nIl mio nome:\nLa mia e-mail:\nOggetto:"
+    }
+  },
+  "Solution": {
+    "tag": "LA SOLUZIONE LEGTRANS DZ",
+    "title": "Tre pilastri per trasformare la tua professione",
+    "pillar1": {
+      "tag": "Pilastro 1 — OCR ad alta precisione",
+      "title": "Leggi tutti i tuoi documenti, anche i più antichi",
+      "desc": "Il nostro OCR specializzato riconosce manoscritti coloniali francesi, atti manoscritti, tabelle complesse e sigilli ufficiali con una precisione senza pari.",
+      "doc_preview": "[Documento manoscritto coloniale 1954...]",
+      "accuracy": "93.7% di precisione",
+      "features": [
+        "Manoscritti coloniali e moderni",
+        "Tabelle e moduli strutturati",
+        "Esportazione certificata in Word, Excel, PDF"
+      ]
+    },
+    "pillar2": {
+      "tag": "Pilastro 2 — IA Al-DZ",
+      "title": "Un'IA addestrata sul diritto algerino",
+      "desc": "Il nostro modello proprietario è addestrato specificamente sulla terminologia giuridica algerina, dal Codice Civile alle sentenze della Corte Suprema.",
+      "preview": {
+        "acte_civil": "Acte Civil → Atto Civile",
+        "cour_supreme": "Cour Suprême → Corte Suprema"
+      },
+      "features": [
+        "Oltre 50.000 termini giuridici DZ",
+        "Glossario personale evolutivo",
+        "Modalità: letterale / interpretativa"
+      ]
+    },
+    "pillar3": {
+      "tag": "Pilastro 3 — Sovranità",
+      "title": "I tuoi dati rimangono in Algeria",
+      "desc": "A differenza delle soluzioni straniere, LegTrans DZ distribuisce la sua infrastruttura in territorio algerino. I tuoi documenti non lasciano mai il suolo nazionale.",
+      "preview": {
+        "title": "Dati Sovrani",
+        "subtitle": "Infrastruttura Locale"
+      },
+      "features": [
+        "Server in Algeria (Fase 2)",
+        "Crittografia end-to-end",
+        "Conforme al quadro normativo DZ",
+        "Registro di controllo completo"
+      ]
+    }
+  },
+  "Testimonials": {
+    "tag": "ANGOLO DELLE OPINIONI",
+    "title": "La tua opinione conta",
+    "desc": "Stai provando LegTrans DZ? Aiutaci a plasmare il futuro della traduzione giurata condividendo la tua esperienza.",
+    "form": {
+      "tag": "Compila il tuo modulo di tester",
+      "name_label": "Nome & Cognome",
+      "name_placeholder": "Il tuo nome completo",
+      "rating_label": "La tua Valutazione",
+      "quote_label": "La tua Opinione / Testimonianza",
+      "quote_placeholder": "Condividi le tue impressioni sulla precisione della traduzione, la velocità dell'OCR o l'esportazione dei documenti...",
+      "btn_submit": "Invia la mia testimonianza",
+      "btn_sending": "Invio in corso...",
+      "success_title": "Grazie per il tuo feedback!",
+      "success_desc": "La tua testimonianza è stata registrata. Le vostre opinioni ci aiutano molto a perfezionare LegTrans per tutti i traduttori in Algeria.",
+      "btn_reset": "Scrivi un'altra recensione"
+    },
+    "preview": {
+      "tag": "Anteprima in tempo reale del tuo feedback",
+      "quote_placeholder": "La tua testimonianza apparirà qui man mano che digiti...",
+      "name_placeholder": "Nome del Traduttore",
+      "role_placeholder": "Tester della piattaforma"
+    },
+    "list": {
+      "tag": "TESTIMONIANZE DEI CLIENTI",
+      "title": "Cosa dicono i traduttori in tempo reale"
+    },
+    "defaults": [
+      {
+        "name": "Lilia L",
+        "role": "Traduttrice Interprete Ufficiale",
+        "exp": "Univ Badji Mokhtar",
+        "quote": "Testato e approvato! Complimenti per questo strumento innovativo che fa onore al Dipartimento di Traduzione dell'Università Badji Mokhtar - Annaba. Sono felice di vedere uno dei miei brillanti studenti guidare un progetto così ambizioso. Continua così, ti incoraggio vivamente! ✨🎉"
+      },
+      {
+        "name": "Yacine",
+        "role": "Traduttore",
+        "exp": "Traduttore",
+        "quote": "Un'esperienza eccellente, una piattaforma meravigliosa, l'ho provata e il risultato mi ha stupito!"
+      }
+    ]
+  },
+  "Footer": {
+    "desc": "La piattaforma ufficiale di fiducia per i traduttori giurati in Algeria. Ottimizzata per il diritto algerino.",
+    "made_in": "Prodotto in Algeria",
+    "col_product": {
+      "title": "Prodotto",
+      "features": "Funzionalità",
+      "pricing": "Prezzi",
+      "security": "Sicurezza",
+      "roadmap": "Roadmap",
+      "pricingDetails": "Prezzi dettagliati e OCR"
+    },
+    "col_company": {
+      "title": "Azienda",
+      "about": "Chi siamo",
+      "blog": "Blog",
+      "careers": "Carriere",
+      "press": "Stampa"
+    },
+    "col_legal": {
+      "title": "Legale",
+      "terms": "Condizioni d'uso",
+      "privacy": "Politica di privacy",
+      "mentions": "Note legali",
+      "compliance": "Conformità"
+    },
+    "rights": "© 2026 LegTrans DZ. Tutti i diritti riservati.",
+    "supported_by": "Sostenuto dal Ministero dell'Economia della Conoscenza",
+    "startup_label": "Etichetta di Startup in corso"
+  },
+  "Problem": {
+    "tag": "SOVRANITÀ E ECCELLENZA IA",
+    "title": "Intelligenza Artificiale dedicata ai traduttori giurati",
+    "subtitle": "Scopri come la nostra tecnologia specializzata trasforma la traduzione giuridica in Algeria con velocità, precisione e sicurezza senza compromessi.",
+    "metric1_val": "-90%",
+    "metric1_lbl": "Digitazione manuale evitata",
+    "metric1_desc": "Riduzione drastica del tempo speso a ricopiare manualmente atti legali e documenti ufficiali.",
+    "metric2_val": "98.4%",
+    "metric2_lbl": "Precisione terminologica",
+    "metric2_desc": "Modello addestrato specificamente sul lessico amministrativo e giudiziario algerino.",
+    "metric3_val": "10 min",
+    "metric3_lbl": "Per pratica complessa",
+    "metric3_desc": "Invece di 6 ore di faticosa digitazione manuale e formattazione della struttura originaria.",
+    "f1_title": "IA Giuridica Spécialisée",
+    "f1_desc": "Addestrata sulla legislazione algerina, dal Codice Civile alle sentenze della Corte Suprema.",
+    "f2_title": "Risparmio di Tempo Massivo",
+    "f2_desc": "Elimina la digitazione ripetitiva. Dedica la tua competenza solo alla revisione finale e all'autenticazione.",
+    "f3_title": "Esportazione DOCX Professionale",
+    "f3_desc": "Scarica documenti Word (.docx) perfettamente strutturati con tabelle e caratteri originali conservati.",
+    "f4_title": "OCR ad Alta Fedeltà",
+    "f4_desc": "Estrazione ultra-precisa da scansioni a bassa risoluzione, timbri ufficiali e scrittura a mano.",
+    "f5_title": "Flusso di Lavoro Ultra-Rapido",
+    "f5_desc": "Un'interfaccia intuitiva progettata per professionisti: importa, confronta affiancato e finalizza.",
+    "f6_title": "Sovranità e Riservatezza",
+    "f6_desc": "Sicurezza assoluta per file giudiziari sensibili e conformità rigorosa ai quadri normativi nazionali."
+  },
+  "TrustBar": {
+    "tag": "Si fidano di noi:",
+    "translators": "ASSOCIAZIONE TRADUTTORI",
+    "startup": "ETICHETTA STARTUP DZ"
+  },
+  "Glossary": {
+    "hero": {
+      "tag": "INTELLIGENZA COLLETTIVA",
+      "title": "Arricchire il Glossario Giuridico Algerino",
+      "desc": "Contribuisci all'eccellenza terminologica della piattaforma suggerendo termini e traduzioni. Ogni proposta viene validata manualmente dal nostro comitato esperto."
+    },
+    "ranking": {
+      "title": "Classifica dei Collaboratori",
+      "desc": "Riconoscimento della dedizione all'interno della comunità.",
+      "reward_title": "Premio Semestrale",
+      "reward_desc": "Ogni 6 mesi, il miglior collaboratore del glossario riceve 1 mese di abbonamento Premium gratuito.",
+      "badge_pioneer": "Pioniere",
+      "badge_expert": "Esperto",
+      "badge_master": "Maestro"
+    },
+    "form": {
+      "title": "Proponi una nuova espressione",
+      "original_term": "Termine originale",
+      "original_placeholder": "Es: Référé-provision, Saisie-arrêt...",
+      "suggested_translation": "Traduzione suggerita",
+      "suggested_placeholder": "Es: أمر مستعجل بأداء كفالة...",
+      "source_lang": "Lingua di origine",
+      "target_lang": "Lingua di destinazione",
+      "category": "Categoria",
+      "category_placeholder": "Seleziona una categoria",
+      "context": "Contesto / Fonte ufficiale",
+      "context_placeholder": "Es: Codice Civile algerino, Articolo 124...",
+      "optional": "opzionale",
+      "submit": "Invia proposta",
+      "submitting": "Trasmissione..."
+    },
+    "feedback": {
+      "title": "Proposta inviata con successo",
+      "subtitle": "In attesa di validazione",
+      "desc": "Il tuo contributo è stato registrato. Il nostro comitato di esperti lo esaminerà entro 48 ore. Nessuna modifica viene applicata automaticamente.",
+      "timeline_step1": "Proposta registrata",
+      "timeline_step2": "Verifica della conformità legale",
+      "timeline_step3": "Validazione e integrazione nel glossario",
+      "another": "Proponi un'altra terminologia"
+    },
+    "categories": {
+      "civil": "Diritto civile",
+      "penal": "Diritto penale",
+      "commercial": "Diritto commerciale",
+      "administrative": "Diritto amministrativo",
+      "vital": "Stato civile",
+      "official": "Documenti ufficiali",
+      "contracts": "Contratti",
+      "other": "Altro"
+    }
+  },
+  "Billing": {
+    "title": "Fatturazione",
+    "subtitle": "Gestisci i tuoi abbonamenti e visualizza lo storico dei pagamenti",
+    "activeSubscription": "Abbonamento Attivo",
+    "history": "Storico Pagamenti",
+    "date": "Data",
+    "reference": "Riferimento",
+    "plan": "Piano",
+    "amount": "Importo",
+    "status": "Stato",
+    "invoice": "Fattura",
+    "download": "Scarica",
+    "paid": "Pagato",
+    "noHistory": "Nessun pagamento trovato.",
+    "validUntil": "Valido fino a",
+    "notSubscribed": "Non hai un abbonamento attivo."
+  },
+  "OCRSelection": {
+    "title": "Che tipo di documento vuoi elaborare?",
+    "subtitle": "Scegli la modalità adatta al tuo documento.",
+    "mode_hw_title": "Vecchi documenti / manoscritti",
+    "mode_hw_desc": "Per vecchi atti, documenti scritti a mano leggibili, timbri e pagine complesse.",
+    "mode_hw_examples_label": "Esempi",
+    "mode_hw_examples": "Vecchi atti, contratti, documenti storici, manoscritti leggibili.",
+    "mode_table_title": "Tabelle",
+    "mode_table_desc": "Per tabelle, estratti conto, moduli e documenti strutturati.",
+    "mode_table_examples_label": "Esempi",
+    "mode_table_examples": "Estratti conto, tabelle, moduli, documenti organizzati in righe e colonne.",
+    "btn_continue": "Continua",
+    "btn_change_mode": "Cambia modalità"
+  }
+}
