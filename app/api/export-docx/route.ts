@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import {
   Document, Packer, Paragraph, TextRun, HeadingLevel,
   Table, TableRow, TableCell, WidthType, BorderStyle,
-  AlignmentType, ShadingType, PageOrientation, VerticalMerge, VerticalMergeType,
+  AlignmentType, ShadingType, PageOrientation,
 } from "docx";
 
 // ── Markdown → docx children ──────────────────────────────────────────────────
@@ -37,6 +37,7 @@ function markdownToDocx(text: string, isLandscape: boolean): (Paragraph | Table)
       }
 
       const colCount = headers.length;
+      if (colCount === 0) { i++; continue; } // skip malformed tables
       const colWidth = Math.floor(tableWidth / colCount);
 
       const tableRows: TableRow[] = [

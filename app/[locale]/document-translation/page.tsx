@@ -394,16 +394,22 @@ export default function DocumentTranslationPage() {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: translatedText, tables, orientation }),
       });
-      if (!res.ok) throw new Error();
+      if (!res.ok) {
+        const errText = await res.text().catch(() => "");
+        throw new Error(errText || `Erreur serveur (${res.status})`);
+      }
       const blob = await res.blob();
-      const a = Object.assign(document.createElement("a"), {
-        href: URL.createObjectURL(blob),
-        download: `traduction-${targetLang}-${Date.now()}.docx`
-      });
-      a.click(); URL.revokeObjectURL(a.href);
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `traduction-${targetLang}-${Date.now()}.docx`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
       toast.success("Document téléchargé avec succès !");
-    } catch {
-      toast.error("Échec du téléchargement du document Word");
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Échec du téléchargement du document Word");
     } finally {
       setIsDownloading(false);
     }
