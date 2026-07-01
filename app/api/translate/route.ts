@@ -1,81 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
-import { VertexAI, HarmCategory, HarmBlockThreshold } from "@google-cloud/vertexai";
+import { GoogleGenAI } from "@google/genai";
 import { dbAdmin } from "@/lib/firebase-admin";
 
 export const maxDuration = 60;
 
-function getVertexAI(): VertexAI {
-  const credentialsJson = process.env.GOOGLE_CREDENTIALS;
-  const projectId = process.env.GOOGLE_CLOUD_PROJECT || process.env.GOOGLE_PROJECT_ID;
-  const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
-  const privateKey = process.env.GOOGLE_PRIVATE_KEY;
+function getAIClient(): GoogleGenAI {
+  const projectId = process.env.GOOGLE_CLOUD_PROJECT || "rational-lambda-485021-e9";
+  const location = process.env.GOOGLE_CLOUD_LOCATION || "global";
 
-  let credentialsObj: any = null;
-
-  if (credentialsJson) {
-    try {
-      credentialsObj = JSON.parse(credentialsJson);
-    } catch (e) {
-      console.warn("GOOGLE_CREDENTIALS could not be parsed as JSON, attempting manual rebuild...");
-    }
-  }
-
-  if (!credentialsObj && projectId && clientEmail && privateKey) {
-    credentialsObj = {
-      project_id: projectId,
-      private_key: privateKey.replace(/\\n/g, "\n"),
-      client_email: clientEmail,
-    };
-  }
-
-  if (!credentialsObj || !credentialsObj.private_key || !credentialsObj.client_email) {
-    throw new Error("Missing Google Cloud service account credentials.");
-  }
-
-  return new VertexAI({
-    project: credentialsObj.project_id || projectId,
-    location: "us-central1",
-    googleAuthOptions: {
-      credentials: {
-        client_email: credentialsObj.client_email,
-        private_key: credentialsObj.private_key,
-      }
+  return new GoogleGenAI({
+    vertexai: {
+      project: projectId,
+      location: location,
     }
   });
-}
-
-// 🟢 TEMPORARY TEST ENDPOINT TO DEBUG GOOGLE CLOUD CREDENTIALS
-export async function GET(req: NextRequest) {
-  try {
-    const vertexAI = getVertexAI();
-    return new Response(`
-      <html>
-        <body style="font-family: sans-serif; padding: 2rem;">
-          <h2 style="color: green;">✅ Vertex AI Credentials Found!</h2>
-          <p>Google Cloud Project: <strong>${vertexAI.project}</strong></p>
-          <p>Location: <strong>${vertexAI.location}</strong></p>
-          <p>However, if translations are still failing, the issue might be that the model 'gemini-1.5-pro-002' is not enabled or available in us-central1 for your account.</p>
-        </body>
-      </html>
-    `, { headers: { 'Content-Type': 'text/html' } });
-  } catch (error: any) {
-    return new Response(`
-      <html>
-        <body style="font-family: sans-serif; padding: 2rem;">
-          <h2 style="color: red;">❌ Vertex AI Setup Failed</h2>
-          <p><strong>Error Message:</strong> ${error.message}</p>
-          <hr/>
-          <h3>How to fix in Vercel:</h3>
-          <p>Ensure these Environment Variables are correctly set in your Vercel project settings:</p>
-          <ul>
-            <li><code>GOOGLE_PROJECT_ID</code> (or GOOGLE_CLOUD_PROJECT)</li>
-            <li><code>GOOGLE_CLIENT_EMAIL</code></li>
-            <li><code>GOOGLE_PRIVATE_KEY</code> (Make sure to include the -----BEGIN PRIVATE KEY----- and -----END PRIVATE KEY----- lines)</li>
-          </ul>
-        </body>
-      </html>
-    `, { headers: { 'Content-Type': 'text/html' }, status: 500 });
-  }
 }
 
 export async function POST(req: NextRequest) {
@@ -86,16 +24,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Aucun texte fourni" }, { status: 400 });
     }
 
-    const vertexAI = getVertexAI();
-
-    const model = vertexAI.preview.getGenerativeModel({
-      model: "gemini-1.5-pro-002",
-      safetySettings: [
-        { category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_NONE },
-        { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_NONE },
-      ],
-      generationConfig: { temperature: 0.1 },
-    });
+    const ai = getAIClient();
 
     const languageNames: Record<string, string> = {
       fr: "Français",
@@ -123,17 +52,15 @@ ${text}
 Ne génère aucun commentaire d'introduction ni de conclusion, retourne UNIQUEMENT le texte traduit directement.
 `;
 
-    const request = {
-      contents: [
-        {
-          role: "user" as const,
-          parts: [{ text: prompt }],
-        },
-      ],
-    };
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-pro",
+      contents: prompt,
+      config: {
+        temperature: 0.1,
+      }
+    });
 
-    const resp = await model.generateContent(request);
-    const translatedText = resp.response.candidates?.[0]?.content?.parts?.[0]?.text || "";
+    const translatedText = response.text || "";
 
     const cleanInput = text.trim();
     const cleanOutput = translatedText.trim();
