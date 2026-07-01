@@ -1,10 +1,48 @@
 import { NextRequest, NextResponse } from "next/server";
-import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
+import { VertexAI, HarmCategory, HarmBlockThreshold } from "@google-cloud/vertexai";
 import { dbAdmin } from "@/lib/firebase-admin";
 
 export const maxDuration = 60;
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
+function getVertexAI(): VertexAI {
+  const credentialsJson = process.env.GOOGLE_CREDENTIALS;
+  const projectId = process.env.GOOGLE_CLOUD_PROJECT || process.env.GOOGLE_PROJECT_ID;
+  const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
+  const privateKey = process.env.GOOGLE_PRIVATE_KEY;
+
+  let credentialsObj: any = null;
+
+  if (credentialsJson) {
+    try {
+      credentialsObj = JSON.parse(credentialsJson);
+    } catch (e) {
+      console.warn("GOOGLE_CREDENTIALS could not be parsed as JSON, attempting manual rebuild...");
+    }
+  }
+
+  if (!credentialsObj && projectId && clientEmail && privateKey) {
+    credentialsObj = {
+      project_id: projectId,
+      private_key: privateKey.replace(/\\n/g, "\n"),
+      client_email: clientEmail,
+    };
+  }
+
+  if (!credentialsObj || !credentialsObj.private_key || !credentialsObj.client_email) {
+    throw new Error("Missing Google Cloud service account credentials.");
+  }
+
+  return new VertexAI({
+    project: credentialsObj.project_id || projectId,
+    location: "us-central1",
+    googleAuthOptions: {
+      credentials: {
+        client_email: credentialsObj.client_email,
+        private_key: credentialsObj.private_key,
+      }
+    }
+  });
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -14,8 +52,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Aucun texte fourni" }, { status: 400 });
     }
 
-    const model = genAI.getGenerativeModel({
-      model: "gemini-2.5-pro",
+    const vertexAI = getVertexAI();
+
+    const model = vertexAI.preview.getGenerativeModel({
+      model: "gemini-1.5-pro-002",
       safetySettings: [
         { category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_NONE },
         { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_NONE },
@@ -59,7 +99,7 @@ Ne génère aucun commentaire d'introduction ni de conclusion, retourne UNIQUEME
     };
 
     const resp = await model.generateContent(request);
-    const translatedText = resp.response.text() || "";
+    const translatedText = resp.response.candidates?.[0]?.content?.parts?.[0]?.text || "";
 
     const cleanInput = text.trim();
     const cleanOutput = translatedText.trim();

@@ -1,8 +1,46 @@
 import { NextRequest, NextResponse } from "next/server";
+import { VertexAI, HarmCategory, HarmBlockThreshold } from "@google-cloud/vertexai";
 import { verifyBackendUser, checkAndReserveBackendUsage, rollbackBackendUsage } from "@/lib/auth-backend";
-import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
+function getVertexAI(): VertexAI {
+  const credentialsJson = process.env.GOOGLE_CREDENTIALS;
+  const projectId = process.env.GOOGLE_CLOUD_PROJECT || process.env.GOOGLE_PROJECT_ID;
+  const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
+  const privateKey = process.env.GOOGLE_PRIVATE_KEY;
+
+  let credentialsObj: any = null;
+
+  if (credentialsJson) {
+    try {
+      credentialsObj = JSON.parse(credentialsJson);
+    } catch (e) {
+      console.warn("GOOGLE_CREDENTIALS could not be parsed as JSON, attempting manual rebuild...");
+    }
+  }
+
+  if (!credentialsObj && projectId && clientEmail && privateKey) {
+    credentialsObj = {
+      project_id: projectId,
+      private_key: privateKey.replace(/\\n/g, "\n"),
+      client_email: clientEmail,
+    };
+  }
+
+  if (!credentialsObj || !credentialsObj.private_key || !credentialsObj.client_email) {
+    throw new Error("Missing Google Cloud service account credentials.");
+  }
+
+  return new VertexAI({
+    project: credentialsObj.project_id || projectId,
+    location: "us-central1",
+    googleAuthOptions: {
+      credentials: {
+        client_email: credentialsObj.client_email,
+        private_key: credentialsObj.private_key,
+      }
+    }
+  });
+}
 
 const SYSTEM_PROMPT = `
 You are a highly capable legal assistant (Assistant juridique IA / المساعد القانوني).
@@ -36,12 +74,16 @@ export async function POST(req: NextRequest) {
     }
 
     try {
-      const generativeModel = genAI.getGenerativeModel({
-        model: "gemini-3.5-flash",
-        systemInstruction: SYSTEM_PROMPT,
+      const vertexAI = getVertexAI();
+      const generativeModel = vertexAI.preview.getGenerativeModel({
+        model: "gemini-1.5-pro-002",
+        systemInstruction: {
+          role: "system",
+          parts: [{ text: SYSTEM_PROMPT }]
+        },
       });
 
-      // Format history for Gemini
+      // Format history for Gemini Vertex AI
       // messages is an array of { role: "user" | "assistant", content: string }
       const history = messages.slice(0, -1).map((msg: any) => ({
         role: msg.role === "assistant" ? "model" : "user",
@@ -52,7 +94,7 @@ export async function POST(req: NextRequest) {
       const chat = generativeModel.startChat({ history });
 
       const result = await chat.sendMessage(lastMessage);
-      const responseText = result.response.text();
+      const responseText = result.response.candidates?.[0]?.content?.parts?.[0]?.text || "";
 
       if (!responseText) {
         throw new Error("Empty response from Gemini");
