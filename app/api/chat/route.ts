@@ -69,7 +69,7 @@ export async function POST(req: NextRequest) {
         history: history,
       });
 
-      const result = await chat.sendMessage(lastMessage);
+      const result = await chat.sendMessage({ message: lastMessage });
       const responseText = result.text || "";
 
       if (!responseText) {
