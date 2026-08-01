@@ -10,22 +10,25 @@ export function getAIClient(): GoogleGenAI {
   }
 
   // 2. If using Vertex AI on Vercel, we need to pass the Service Account JSON to Google Auth.
-  // Google Auth expects a file path in GOOGLE_APPLICATION_CREDENTIALS.
-  // So we write the JSON string from Vercel ENV to a temporary file.
   if (process.env.GOOGLE_CREDENTIALS_JSON) {
-    const tmpPath = path.join(os.tmpdir(), "gcp-sa.json");
-    if (!fs.existsSync(tmpPath)) {
-      try {
-        fs.writeFileSync(tmpPath, process.env.GOOGLE_CREDENTIALS_JSON);
-      } catch (err) {
-        console.error("Failed to write GCP Service Account temp file:", err);
-      }
+    let rawJson = process.env.GOOGLE_CREDENTIALS_JSON.trim();
+    
+    // Strip surrounding quotes if the user included them in Vercel UI
+    if ((rawJson.startsWith("'") && rawJson.endsWith("'")) || (rawJson.startsWith('"') && rawJson.endsWith('"'))) {
+      rawJson = rawJson.slice(1, -1);
     }
-    process.env.GOOGLE_APPLICATION_CREDENTIALS = tmpPath;
+
+    try {
+      const parsed = JSON.parse(rawJson);
+      const tmpPath = path.join(os.tmpdir(), "gcp-sa.json");
+      fs.writeFileSync(tmpPath, JSON.stringify(parsed));
+      process.env.GOOGLE_APPLICATION_CREDENTIALS = tmpPath;
+    } catch (err) {
+      console.error("[ai-client] Failed to parse GOOGLE_CREDENTIALS_JSON:", err);
+    }
   }
 
   const projectId = process.env.GOOGLE_CLOUD_PROJECT || "rational-lambda-485021-e9";
-  // Vertex AI Gemini models are primarily hosted in us-central1
   const location = process.env.GOOGLE_CLOUD_LOCATION || "us-central1";
 
   return new GoogleGenAI({
