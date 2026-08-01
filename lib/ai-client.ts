@@ -32,9 +32,8 @@ export function getAIClient(): GoogleGenAI {
   const location = process.env.GOOGLE_CLOUD_LOCATION || "us-central1";
 
   return new GoogleGenAI({
-    vertexai: {
-      project: projectId,
-      location: location,
-    },
+    vertexai: true,
+    project: projectId,
+    location: location,
   });
 }
