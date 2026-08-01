@@ -1,22 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { GoogleGenAI } from "@google/genai";
+import { getAIClient } from "@/lib/ai-client";
 import { verifyBackendUser, checkAndReserveBackendUsage, rollbackBackendUsage } from "@/lib/auth-backend";
-
-function getAIClient(): GoogleGenAI {
-  if (process.env.GEMINI_API_KEY) {
-    return new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-  }
-
-  const projectId = process.env.GOOGLE_CLOUD_PROJECT || "rational-lambda-485021-e9";
-  const location = process.env.GOOGLE_CLOUD_LOCATION || "global";
-
-  return new GoogleGenAI({
-    vertexai: {
-      project: projectId,
-      location: location,
-    }
-  });
-}
 
 const SYSTEM_PROMPT = `
 You are a highly capable legal assistant (Assistant juridique IA / المساعد القانوني).
@@ -60,7 +44,7 @@ export async function POST(req: NextRequest) {
       }));
 
       const lastMessage = messages[messages.length - 1].content;
-      
+
       const chat = ai.chats.create({
         model: "gemini-2.5-pro",
         config: {

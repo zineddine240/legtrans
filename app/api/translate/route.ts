@@ -1,24 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { GoogleGenAI } from "@google/genai";
+import { getAIClient } from "@/lib/ai-client";
 import { dbAdmin } from "@/lib/firebase-admin";
-
-export const maxDuration = 60;
-
-function getAIClient(): GoogleGenAI {
-  if (process.env.GEMINI_API_KEY) {
-    return new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-  }
-
-  const projectId = process.env.GOOGLE_CLOUD_PROJECT || "rational-lambda-485021-e9";
-  const location = process.env.GOOGLE_CLOUD_LOCATION || "global";
-
-  return new GoogleGenAI({
-    vertexai: {
-      project: projectId,
-      location: location,
-    }
-  });
-}
 
 export async function POST(req: NextRequest) {
   try {
