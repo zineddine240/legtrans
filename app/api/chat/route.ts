@@ -37,18 +37,25 @@ export async function POST(req: NextRequest) {
     try {
       const ai = getAIClient();
 
-      // Format history for Gemini SDK Interactions API
-      const formattedInput = messages.map((msg: any) =>
-        `${msg.role === "assistant" ? "Assistant" : "User"}: ${msg.content}`
-      ).join("\n\n");
+      // Format history for Gemini SDK
+      // messages is an array of { role: "user" | "assistant", content: string }
+      const history = messages.slice(0, -1).map((msg: any) => ({
+        role: msg.role === "assistant" ? "model" : "user",
+        parts: [{ text: msg.content }],
+      }));
 
-      const interaction = await ai.interactions.create({
+      const lastMessage = messages[messages.length - 1].content;
+
+      const chat = ai.chats.create({
         model: "gemini-3.6-flash",
-        system_instruction: SYSTEM_PROMPT,
-        input: formattedInput + "\n\nAssistant:",
+        config: {
+          systemInstruction: SYSTEM_PROMPT,
+        },
+        history: history,
       });
 
-      const responseText = interaction.output_text || "";
+      const result = await chat.sendMessage({ message: lastMessage });
+      const responseText = result.text || "";
 
       if (!responseText) {
         throw new Error("Empty response from Gemini");
