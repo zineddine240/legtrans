@@ -10,9 +10,9 @@ export async function GET() {
     const ai = getAIClient();
     
     // Test a quick generation
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-pro",
-      contents: "Say OK",
+    const interaction = await ai.interactions.create({
+      model: "gemini-3.7-flash",
+      input: "Say OK",
     });
 
     return NextResponse.json({
@@ -20,7 +20,7 @@ export async function GET() {
       hasApiKey,
       hasJsonEnv,
       jsonLength,
-      result: response.text,
+      result: interaction.output_text,
     });
   } catch (error: any) {
     return NextResponse.json({

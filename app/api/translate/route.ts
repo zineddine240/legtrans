@@ -38,15 +38,15 @@ ${text}
 Ne génère aucun commentaire d'introduction ni de conclusion, retourne UNIQUEMENT le texte traduit directement.
 `;
 
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-pro",
-      contents: prompt,
-      config: {
+    const interaction = await ai.interactions.create({
+      model: "gemini-3.6-flash",
+      input: prompt,
+      generation_config: {
         temperature: 0.1,
       }
     });
 
-    const translatedText = response.text || "";
+    const translatedText = interaction.output_text || "";
 
     const cleanInput = text.trim();
     const cleanOutput = translatedText.trim();

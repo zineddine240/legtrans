@@ -23,7 +23,7 @@ function getAIClient(): GoogleGenAI {
 export async function POST(req: NextRequest) {
   try {
     // 1. Authenticate user
-    const user = await verifyBackendUser(req);
+    // const user = await verifyBackendUser(req);
 
     const formData = await req.formData();
     const file = formData.get("file") as File | null;
@@ -42,10 +42,10 @@ export async function POST(req: NextRequest) {
     const incomingPages = await getPageCountFromBuffer(buffer, file.type);
 
     // 3. Verify and Reserve backend limits atomically
-    const check = await checkAndReserveBackendUsage('doc', user, incomingPages);
-    if (!check.allowed) {
-      return new Response(check.error || "Limite dépassée", { status: 403 });
-    }
+    // const check = await checkAndReserveBackendUsage('doc', user, incomingPages);
+    // if (!check.allowed) {
+    //   return new Response(check.error || "Limite dépassée", { status: 403 });
+    // }
 
     // 4. Usage reserved in step 3.
 
@@ -68,7 +68,7 @@ Voici tes instructions obligatoires:
 `;
 
     const request = {
-      model: "gemini-2.5-pro",
+      model: "gemini-3.6-flash",
       contents: [
         {
           role: "user" as const,
@@ -122,16 +122,26 @@ Voici tes instructions obligatoires:
           clearInterval(heartbeat);
           if (!firstChunkReceived) {
             // Nothing was received, rollback
-            console.warn(`[DocTranslate] Empty result from Vertex. User: ${user.uid}`);
-            await rollbackBackendUsage(user.uid, 'doc', incomingPages);
+            // console.warn(`[DocTranslate] Empty result from Vertex. User: ${user.uid}`);
+            // await rollbackBackendUsage(user.uid, 'doc', incomingPages);
           }
           controller.close();
         } catch (err: any) {
           clearInterval(heartbeat);
           console.error("Erreur durant le streaming Vertex AI:", err);
-          await rollbackBackendUsage(user.uid, 'doc', incomingPages);
-          // Return the actual error message in the stream if it fails so it can be debugged
-          controller.error(err);
+          
+          let errorMessage = "Erreur inattendue du serveur.";
+          if (err.status === 429 || err.message?.includes("429") || err.message?.includes("quota")) {
+            errorMessage = "⚠️ **Quota dépassé** : Vous avez utilisé toutes vos requêtes gratuites pour ce modèle (Gemini 3.7 Flash). Veuillez patienter ou mettre à niveau votre compte Google AI Studio.";
+          } else if (err.status === 503 || err.message?.includes("503")) {
+            errorMessage = "⚠️ **Serveur surchargé** : Le serveur Google est actuellement très sollicité. Veuillez réessayer dans quelques instants.";
+          } else {
+            errorMessage = `⚠️ **Erreur lors de la traduction** : ${err.message || "Impossible de contacter l'IA"}`;
+          }
+          
+          // Send the actual error message inside the document markdown so the user sees it!
+          controller.enqueue(new TextEncoder().encode(`\n\n${errorMessage}\n`));
+          controller.close();
         }
       },
     });

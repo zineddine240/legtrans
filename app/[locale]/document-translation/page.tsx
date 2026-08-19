@@ -259,13 +259,6 @@ export default function DocumentTranslationPage() {
     if (stats) setTrialStats(stats);
   }, [isAdmin, profile]);
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#faf8f3]">
-        <Loader2 className="w-10 h-10 animate-spin text-[#0d6e4e]" />
-      </div>
-    );
-  }
 
   const handleFile = useCallback((f: File) => {
     if (f.size > 4 * 1024 * 1024) {
@@ -439,6 +432,14 @@ export default function DocumentTranslationPage() {
     { code: "es", label: "Espagnol" },
     { code: "it", label: "Italien" },
   ];
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#faf8f3]">
+        <Loader2 className="w-10 h-10 animate-spin text-[#0d6e4e]" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen lg:h-screen flex flex-col lg:overflow-hidden overflow-y-auto" style={{ background: "#faf8f3" }}>
