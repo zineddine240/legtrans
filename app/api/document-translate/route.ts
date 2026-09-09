@@ -68,7 +68,7 @@ Voici tes instructions obligatoires:
 `;
 
     const request = {
-      model: "gemini-3.6-flash",
+      model: "gemini-2.5-flash",
       contents: [
         {
           role: "user" as const,
@@ -132,7 +132,7 @@ Voici tes instructions obligatoires:
           
           let errorMessage = "Erreur inattendue du serveur.";
           if (err.status === 429 || err.message?.includes("429") || err.message?.includes("quota")) {
-            errorMessage = "⚠️ **Quota dépassé** : Vous avez utilisé toutes vos requêtes gratuites pour ce modèle (Gemini 3.7 Flash). Veuillez patienter ou mettre à niveau votre compte Google AI Studio.";
+            errorMessage = "⚠️ **Quota dépassé** : Vous avez utilisé toutes vos requêtes gratuites pour ce modèle (Gemini 2.5 Flash). Veuillez patienter ou mettre à niveau votre compte Google AI Studio.";
           } else if (err.status === 503 || err.message?.includes("503")) {
             errorMessage = "⚠️ **Serveur surchargé** : Le serveur Google est actuellement très sollicité. Veuillez réessayer dans quelques instants.";
           } else {
