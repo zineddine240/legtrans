@@ -11,7 +11,7 @@ export async function GET() {
     
     // Test a quick generation
     const interaction = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-2.5-flash",
       input: "Say OK",
     });
 
